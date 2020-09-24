@@ -53,7 +53,7 @@
     <scroll :speed="10" :fps="10" v-slot="{ keyframe }" auto-play>
         <div>
             <svg class="text-blue-200" viewBox="0 0 1363 20000">
-                <human :keyframe="keyframe" :repeat="true" />
+                <sky :keyframe="keyframe" :repeat="true" />
             </svg>
         </div>
     </scroll>
