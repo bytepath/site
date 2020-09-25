@@ -2,15 +2,15 @@
 
   <% site.pages.find({type: 'bytepath'}).sort('order').each(function (p) { %>
     <% var fileName = p.path.replace(/^.+?\/([\w-]+)\.html/, '$1') %>
-      <% if (fileName === 'bytepath') { %>
-        <li><h3>Bytepath</h3></li>
+      <% if (fileName === 'introduction') { %>
+        <li><h3>Bytepath Essentials</h3></li>
       <% } %>
     <li>
       <a href="<%- url_for(p.path) %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %></a>
     </li>
   <% }) %>
 
-  <% ['api', 'style-guide'].indexOf(type) === -1 && site.pages.find({type: type}).sort('order').each(function (p) { %>
+  <% ['api', 'style-guide'].indexOf(type) === -1 && site.pages.find({type: 'guide'}).sort('order').each(function (p) { %>
     <% var fileName = p.path.replace(/^.+?\/([\w-]+)\.html/, '$1') %>
     <% if (type === 'guide') { %>
       <% if (fileName === 'installation') { %>
@@ -34,9 +34,9 @@
       <% if (fileName === 'reactivity') { %>
         <li><h3>Internals</h3></li>
       <% } %>
+          <li>
+            <a href="<%- url_for(p.path) %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %></a>
+          </li>
     <% } %>
-    <li>
-      <a href="<%- url_for(p.path) %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %></a>
-    </li>
   <% }) %>
 </ul>
