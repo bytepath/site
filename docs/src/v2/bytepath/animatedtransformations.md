@@ -52,6 +52,10 @@ We can increase or decrease the size of our &lt;vector&gt; by modifying the **:S
         components: {
             vector: Bytepath.graphics.vector,
             scroll: Bytepath.timers.scroll,
+            
+            // Reset, short for <keyframe-reset> is used to prevent the timer from 
+            // starting until it reaches a certain frame position. In this case,
+            // we wont start scaling until frame 1500
             reset: Bytepath.timers.reset,
         }
     }
@@ -68,7 +72,7 @@ We can increase or decrease the size of our &lt;vector&gt; by modifying the **:S
                 <vector :x="100" :y="100" :sx="reset.keyframe / 100">
                     <rect width="50" height="50" fill="blue"/>
                 </vector>
-                
+
                 <vector :x="200" :sx="reset.keyframe / 100" :sy="reset.keyframe / 100">
                     <rect width="50" height="50" fill="green"/>
                 </vector>
@@ -101,29 +105,41 @@ We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the
     export default {
         components: {
             vector: Bytepath.graphics.vector,
+            scroll: Bytepath.timers.scroll,
+
+            // Reset, short for <keyframe-reset> is used to prevent the timer from
+            // starting until it reaches a certain frame position. In this case,
+            // we wont start scaling until frame 3000
+            reset: Bytepath.timers.reset,
         }
     }
 </script>
 
 <template>
-    <svg width="100%" height="100%">
-        <g transform="translate(0, 50)">
-            <vector>
-                <rect width="100" height="50" fill="red"/>
-            </vector>
-            <vector :a="45" :x="125">
-                <rect width="100" height="50" fill="blue"/>
-            </vector>
+    <scroll :speed="1" v-slot="scroll">
+        <reset :keyframe="scroll.keyframe" :start="3000" v-slot="reset">
+            <svg width="100%" height="100%">
+                <g transform="translate(0, 50)">
+                    <vector :a="(reset.keyframe / 10) % 360">
+                        <rect width="100" height="50" fill="red"/>
+                    </vector>
+                    <vector :a="(45 + (reset.keyframe / 8)) % 360" :x="125">
+                        <rect width="100" height="50" fill="blue"/>
+                    </vector>
 
-            <vector :a="90" :x="225">
-                <rect width="100" height="50" fill="green"/>
-            </vector>
+                    <vector :a="(90 + (reset.keyframe / 4)) % 360" :x="225">
+                        <rect width="100" height="50" fill="green"/>
+                    </vector>
 
-            <vector :a="200" :x="325">
-                <rect width="100" height="50" fill="orange"/>
-            </vector>
-        </g>
-    </svg>
+                    <!-- value % 360 will force our frame to stay -->
+                    <!-- within the 0-360deg rotation range -->
+                    <vector :a="(200 + (reset.keyframe / 2)) % 360" :x="325">
+                        <rect width="100" height="50" fill="orange"/>
+                    </vector>
+                </g>
+            </svg>
+        </reset>
+    </scroll>
 </template>
 ```
 {% raw %}

@@ -5,6 +5,10 @@
         components: {
             vector: Bytepath.graphics.vector,
             scroll: Bytepath.timers.scroll,
+
+            // Reset, short for <keyframe-reset> is used to prevent the timer from
+            // starting until it reaches a certain frame position. In this case,
+            // we wont start scaling until frame 1500
             reset: Bytepath.timers.reset,
         }
     }
