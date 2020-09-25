@@ -2,9 +2,7 @@
     import Bytepath from 'bytepath';
 
     export default {
-        mixins: [
-            Bytepath.AnimationEntity,
-        ],
+        mixins: [Bytepath.AnimationEntity],
 
         props: {
             fill: {

@@ -3,9 +3,8 @@
  //   import Balloon from "./Balloon";
     import Human from "../Animation/Assets/Human/Human.vue";
 //    import AssetExample from "./AssetExample";
-    //import OceanScene from "../Animation/Scenes/Ocean/OceanScene";
+    import OceanScene from "../Animation/Scenes/Ocean/OceanScene";
 //    import YellowFish from "../Animation/Assets/Fish/YellowFish";
-    import Sky from "./Sky/Sky";
 
     export default {
         mixins: [],
@@ -36,11 +35,11 @@
             }
         },
         components: {
-            //OceanScene,
+            OceanScene,
             scroll: Bytepath.timers.scroll,
             clock: Bytepath.timers.clock,
             Human,
-            Sky,
+            vector: Bytepath.graphics.vector,
             //Balloon,
             //YellowFish,
         }
@@ -50,11 +49,16 @@
 </script>
 
 <template>
-    <scroll :speed="10" :fps="10" v-slot="{ keyframe }" auto-play>
+    <scroll :fps="10" v-slot="{ keyframe }" auto-play>
         <div>
+            DOGS
             <svg class="text-blue-200" viewBox="0 0 1363 20000">
-                <sky :keyframe="keyframe" :repeat="true" />
+                <human :keyframe="keyframe" />
             </svg>
+
+            <vector>
+                <rect x="0" y="0" width="50" height="50" fill="red" />
+            </vector>
         </div>
     </scroll>
 </template>

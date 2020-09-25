@@ -7,8 +7,8 @@
     export default {
         name: 'sky',
         mixins: [bytepath.mixins.keyframer],
-        props:{
-            fps:{
+        props: {
+            fps: {
                 type: Number,
                 default: 15
             }
@@ -33,11 +33,10 @@
         <clock :fps="10" :repeat="true" v-slot="t">
             <bounce :keyframe="t.keyframe" :mx="0.5" v-slot="bounce">
                 <g>
-                    <cloud :matrix="bounce.matrix" :mx="2" :a="45" :x="(-300 + (keyframe % 1040)) " :y="700"/>
-
-                    <cloud :matrix="bounce.matrix" :mx="2" :x="(-300 + (keyframe % 1040)) " :y="700"/>
-                <cloud :matrix="bounce.matrix.inverse()" :mx="1.5" :x="-400 + (keyframe % 750)" :y="550"/>
-                <cloud :matrix="bounce.matrix" :mx="1" :x="-450 +  (keyframe % 1060)" :y="300"/>
+                    <cloud :matrix="bounce.matrix" :mx="0.2" :x="(-300 + (keyframe % 1040)) " :y="700"/>
+                    <cloud :matrix="bounce.matrix" :mx="0.2" :x="(-300 + (keyframe % 1040)) " :y="700"/>
+                    <cloud :matrix="bounce.matrix.inverse()" :mx="0.15" :x="-400 + (keyframe % 750)" :y="550"/>
+                    <cloud :matrix="bounce.matrix" :mx="0.1" :x="-450 +  (keyframe % 1060)" :y="300"/>
                 </g>
             </bounce>
         </clock>
