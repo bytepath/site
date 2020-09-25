@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import HomePage from "./components/homepage/HomePage";
+import App from "./App";
 
 // Basic Transformations
 import VectorRect from "./components/Guide/VectorRect";
@@ -38,7 +39,13 @@ Object.entries(components).map((item) => {
 Vue.config.productionTip = false
 
 // eslint-disable-next-line
-// var VUEAPP = new Vue({
-//   render: h => h(App),
-// })
+if (document.getElementById("catdogapp")) {
+    console.log("catdog app detected");
+    new Vue({
+        render: h => h(App),
+    }).$mount("#catdogapp");
+}
+else {
+    console.log("no catdog");
+}
 window.vueapp = Vue;

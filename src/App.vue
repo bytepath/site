@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <homepage />
+    <animated-rotation />
   </div>
 </template>
 
 <script>
-import Homepage from './components/homepage/HomePage.vue'
+//import Homepage from './components/homepage/HomePage.vue'
+import AnimatedRotation from "./components/Guide/AnimatedTransformations/AnimatedRotation";
+
 
 export default {
   name: 'App',
   components: {
-    Homepage
+    //Homepage,
+    AnimatedRotation
   }
 }
 </script>
