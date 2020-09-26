@@ -9,7 +9,7 @@
 </script>
 
 <template>
-    <vector style="fill: currentColor;">
+    <vector :x="100" :y="100">
         <rect width="50" height="50" fill="red" />
     </vector>
 </template>

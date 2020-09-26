@@ -2,12 +2,19 @@ import Vue from 'vue'
 import HomePage from "./components/homepage/HomePage";
 import App from "./App";
 
+
+// Introduction
+import VectorRect from "./components/Guide/Introduction/Rectangle";
+import ComponentBasedAssets from "./components/Guide/Introduction/ComponentBasedAssets";
+import BalloonSample from "./components/Guide/Introduction/BalloonSample";
+import AssetComposition from "./components/Guide/Introduction/AssetComposition";
+
 // Basic Transformations
-import VectorRect from "./components/Guide/VectorRect";
-import VectorRectProps from "./components/Guide/VectorRectProps";
-import VectorRectScaleProps from "./components/Guide/VectorRectScaleProps";
-import VectorRectRotateProps from "./components/Guide/VectorRectRotateProps";
-import VectorRectWHProps from "./components/Guide/VectorRectWHProps";
+
+import VectorRectProps from "./components/Guide/BasicTransformations/VectorRectProps";
+import VectorRectScaleProps from "./components/Guide/BasicTransformations/VectorRectScaleProps";
+import VectorRectRotateProps from "./components/Guide/BasicTransformations/VectorRectRotateProps";
+import VectorRectWHProps from "./components/Guide/BasicTransformations/VectorRectWHProps";
 
 // Timers
 import UsingScrollTimer from "./components/Guide/Timers/UsingScrollTimer";
@@ -21,6 +28,9 @@ import AnimatedTranslation from "./components/Guide/AnimatedTransformations/Anim
 let components = {
     "homepage": HomePage,
     "vector-rect": VectorRect,
+    "component-based": ComponentBasedAssets,
+    "balloon-sample": BalloonSample,
+    "asset-composition": AssetComposition,
     "vector-rect-xy-props": VectorRectProps,
     "vector-rect-scale-props": VectorRectScaleProps,
     "vector-rect-rotate-props": VectorRectRotateProps,

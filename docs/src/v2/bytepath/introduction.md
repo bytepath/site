@@ -45,10 +45,18 @@ Bytepath is a framework for building vector graphics and animations in your web 
 Lets start by rendering a simple rectangle using the included the &lt;vector&gt; component.
 Internally, &lt;vector&gt; is just a really fancy &lt;svg&gt;, so any valid &lt;svg&gt; syntax can be written inside. 
 ``` html
+<!-- Rectangle.vue -->
 <script>
     import Bytepath from "bytepath";
 
     export default {
+        props: {
+            color: {
+                type: String,
+                default: "red",
+            }
+        },
+
         components: {
             vector: Bytepath.graphics.vector,
         }
@@ -57,7 +65,7 @@ Internally, &lt;vector&gt; is just a really fancy &lt;svg&gt;, so any valid &lt;
 
 <template>
     <vector>
-        <rect width="50" height="50" fill="red" />
+        <rect width="50" height="50" :fill="color" />
     </vector>
 </template>
 ```
@@ -71,6 +79,129 @@ var app2 = new window.vueapp({ el: '#vector-rect' })
 {% endraw %}
 
 <p class="tip">It's helpful to be familiar with the &lt;svg&gt; tag, but if you aren't, dont worry! You won't be manually building assets like this in real projects unless you have a specific reason to do so.</p>
+
+## Component Based Assets
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQe4SJ" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
+
+Since the rectangle we just created is just a normal single file Vue component, we can now use it over and over again by importing Rectangle.vue into another component, just like we can do in any Vue.js based app.
+By changing the :color prop we added to the &lt;rectangle&gt; component, we can now create an unlimited number of unique graphical assets simply by changing the color.   
+
+``` html
+<!-- Rectangle.vue -->
+<script>
+    import Rectangle from "./Rectangle";
+
+    export default {
+        components: { Rectangle },
+    }
+</script>
+
+<template>
+    <div>
+        <rectangle fill="red" />
+        <rectangle fill="blue" />
+        <rectangle fill="green" />
+        <rectangle fill="orange" />
+    </div>
+</template>
+```
+{% raw %}
+<div id="cb" class="demo">
+    <component-based />
+</div>
+<script>
+var app3 = new window.vueapp({ el: '#cb' })
+</script>
+{% endraw %}
+
+
+## Sample Assets
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQe4SJ" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
+
+Bytepath ships with sample assets you can use right out of the box. Lets try importing the bytepath balloon logo.
+``` html
+<script>
+    import Bytepath from "bytepath";
+
+    export default {
+        components: {
+            balloon: Bytepath.samples.assets.balloon,
+        },
+    }
+</script>
+
+<template>
+    <div>
+        <balloon color="red" />
+        <balloon color="blue" />
+        <balloon color="green" />
+        <balloon color="orange" />
+    </div>
+</template>
+```
+{% raw %}
+<div id="a4" class="demo">
+    <balloon-sample />
+</div>
+<script>
+var app4 = new window.vueapp({ el: '#a4' })
+</script>
+{% endraw %}
+
+<p class="tip">It's helpful to be familiar with the &lt;svg&gt; tag, but if you aren't, dont worry! You won't be manually building assets like this in real projects unless you have a specific reason to do so.</p>
+
+
+## Asset Composition
+<div class="scrimba"><a href="https://scrimba.com/p/pXKqta/cEQe4SJ" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
+
+Assets can be composed together in other components to create new assets. 
+In the example below we import two sample assets, balloon and human. By including human as a slotted component on balloon, Bytepath will now consider these to be a single asset.
+Try moving the sliders below and watch the assets move together. 
+ 
+``` html
+<script>
+    import Bytepath from "bytepath";
+
+    export default {
+        data() {
+            return { x: 50, y: 0, angle: 0 };
+        },
+
+        components: {
+            balloon: Bytepath.samples.assets.balloon,
+            human: Bytepath.samples.assets.human,
+        }
+    }
+</script>
+
+<template>
+    <div>
+        <input type="range" v-model.number="x" min="0" max="100">X = {{ x }}<br/>
+        <input type="range" v-model.number="y" min="0" max="50">Y = {{ y }}<br/>
+        <input type="range" v-model.number="angle" min="0" max="360">Angle = {{ angle }}<br/>
+
+        <!-- Here human and balloon are two distinct assets -->
+        <human :x="0"  />
+        <balloon :x="25"  />
+
+        <!-- Here balloon and human have been combined to make a single asset -->
+        <balloon :x="x" :y="y" :a="angle" v-slot="balloon">
+            <human :position="balloon.position" :sx="2" :sy="2" aspect="xMidYMax meet"/>
+        </balloon>
+    </div>
+</template>
+```
+{% raw %}
+<div id="a5" class="demo">
+    <asset-composition />
+</div>
+<script>
+var app5 = new window.vueapp({ el: '#a5' })
+</script>
+{% endraw %}
+
+<p class="tip">It's helpful to be familiar with the &lt;svg&gt; tag, but if you aren't, dont worry! You won't be manually building assets like this in real projects unless you have a specific reason to do so.</p>
+
 
 
 

@@ -111,13 +111,13 @@ We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the
             <balloon :a="angle % 360"/>
 
             <!-- Rotates in a circle starting at 45 Deg -->
-            <balloon fill="blue" :a="(45 + angle) % 360" :x="125"/>
+            <balloon color="blue" :a="(45 + angle) % 360" :x="125"/>
 
             <!-- Rotates in a circle starting at 90 Deg -->
-            <balloon fill="green" :a="(90 + angle) % 360" :x="225"/>
+            <balloon color="green" :a="(90 + angle) % 360" :x="225"/>
 
             <!-- Rotates in a circle starting at 200 Deg -->
-            <balloon fill="orange" :a="(200 + angle) % 360" :x="325"/>
+            <balloon color="orange" :a="(200 + angle) % 360" :x="325"/>
         </svg>
     </div>
 </template>
