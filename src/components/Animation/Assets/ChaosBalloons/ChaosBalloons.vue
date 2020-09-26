@@ -1,9 +1,7 @@
 <script>
-    import bytepath from "bytepath";
-    import Balloon from "../../../homepage/Balloon";
+    import Bytepath from "bytepath";
 
-    export default {
-        mixins: [bytepath.AnimationEntity],
+    export default Bytepath.CreateAsset({
         props: {
             keyframe: {
                 type: Number,
@@ -24,11 +22,11 @@
         computed: {},
         methods: {},
         components: {
-            clock: bytepath.timers.clock,
-            bounce: bytepath.animations.bounce,
-            Balloon,
+            clock: Bytepath.timers.clock,
+            bounce: Bytepath.animations.bounce,
+            balloon: Bytepath.samples.assets.balloon,
         }
-    }
+    });
 </script>
 
 <template>

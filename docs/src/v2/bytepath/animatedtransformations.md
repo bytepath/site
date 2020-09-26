@@ -12,21 +12,22 @@ By modifying the **:X** and **:Y** props of the &lt;vector&gt; we created in the
     import Bytepath from "bytepath";
 
     export default {
+        data() {
+            return { x: 1, y: 1 };
+        },
+
         components: {
-            vector: Bytepath.graphics.vector,
-            scroll: Bytepath.timers.scroll,
+            balloon: Bytepath.samples.assets.balloon,
         }
     }
 </script>
 
 <template>
-    <scroll :speed="1" v-slot="{ keyframe }">
-        <svg width="100%" height="100%">
-            <vector :x="keyframe">
-                <rect width="50" height="50" fill="red"/>
-            </vector>
-        </svg>
-    </scroll>
+    <div>
+        <input type="range" v-model.number="x" min="0" max="100" />X = {{ x }}<br/>
+        <input type="range" v-model.number="y" min="0" max="100" />Y = {{ y }}<br/>
+        <balloon :x="x" :y="y"/>
+    </div>
 </template>
 ```
 {% raw %}
@@ -49,36 +50,25 @@ We can increase or decrease the size of our &lt;vector&gt; by modifying the **:S
     import Bytepath from "bytepath";
 
     export default {
+        data() {
+            return {
+                sx: 1,
+                sy: 1,
+            };
+        },
+
         components: {
-            vector: Bytepath.graphics.vector,
-            scroll: Bytepath.timers.scroll,
-            
-            // Reset, short for <keyframe-reset> is used to prevent the timer from 
-            // starting until it reaches a certain frame position. In this case,
-            // we wont start scaling until frame 1500
-            reset: Bytepath.timers.reset,
+            balloon: Bytepath.samples.assets.balloon,
         }
     }
 </script>
 
 <template>
-    <scroll :speed="1" v-slot="{ keyframe }">
-        <reset :keyframe="keyframe" :start="1500" v-slot="reset">
-            <svg width="100%" height="100%">
-                <vector :sy="reset.keyframe / 100">
-                    <rect width="50" height="50" fill="red"/>
-                </vector>
-
-                <vector :x="100" :y="100" :sx="reset.keyframe / 100">
-                    <rect width="50" height="50" fill="blue"/>
-                </vector>
-
-                <vector :x="200" :sx="reset.keyframe / 100" :sy="reset.keyframe / 100">
-                    <rect width="50" height="50" fill="green"/>
-                </vector>
-            </svg>
-        </reset>
-    </scroll>
+    <div>
+        <input type="range" v-model.number="sx" min="0" max="4">Scale X = {{ sx }}<br/>
+        <input type="range" v-model.number="sy" min="0" max="4">Scale Y = {{ sy }}<br/>
+        <balloon :sx="sx" :sy="sy"/>
+    </div>
 </template>
 ```
 {% raw %}
@@ -103,43 +93,33 @@ We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the
     import Bytepath from "bytepath";
 
     export default {
-        components: {
-            vector: Bytepath.graphics.vector,
-            scroll: Bytepath.timers.scroll,
+        data() {
+            return { angle: 0 };
+        },
 
-            // Reset, short for <keyframe-reset> is used to prevent the timer from
-            // starting until it reaches a certain frame position. In this case,
-            // we wont start scaling until frame 3000
-            reset: Bytepath.timers.reset,
+        components: {
+            balloon: Bytepath.samples.assets.balloon,
         }
     }
 </script>
 
 <template>
-    <scroll :speed="1" v-slot="scroll">
-        <reset :keyframe="scroll.keyframe" :start="3000" v-slot="reset">
-            <svg width="100%" height="100%">
-                <g transform="translate(0, 50)">
-                    <vector :a="(reset.keyframe / 10) % 360">
-                        <rect width="100" height="50" fill="red"/>
-                    </vector>
-                    <vector :a="(45 + (reset.keyframe / 8)) % 360" :x="125">
-                        <rect width="100" height="50" fill="blue"/>
-                    </vector>
+    <div>
+        <input type="range" v-model.number="angle" min="0" max="360">Angle = {{ angle }}
+        <svg width="100%" height="100%">
+            <!-- Rotates in a circle starting at 0 Deg -->
+            <balloon :a="angle % 360"/>
 
-                    <vector :a="(90 + (reset.keyframe / 4)) % 360" :x="225">
-                        <rect width="100" height="50" fill="green"/>
-                    </vector>
+            <!-- Rotates in a circle starting at 45 Deg -->
+            <balloon fill="blue" :a="(45 + angle) % 360" :x="125"/>
 
-                    <!-- value % 360 will force our frame to stay -->
-                    <!-- within the 0-360deg rotation range -->
-                    <vector :a="(200 + (reset.keyframe / 2)) % 360" :x="325">
-                        <rect width="100" height="50" fill="orange"/>
-                    </vector>
-                </g>
-            </svg>
-        </reset>
-    </scroll>
+            <!-- Rotates in a circle starting at 90 Deg -->
+            <balloon fill="green" :a="(90 + angle) % 360" :x="225"/>
+
+            <!-- Rotates in a circle starting at 200 Deg -->
+            <balloon fill="orange" :a="(200 + angle) % 360" :x="325"/>
+        </svg>
+    </div>
 </template>
 ```
 {% raw %}

@@ -2,19 +2,20 @@
     import Bytepath from "bytepath";
 
     export default {
+        data() {
+            return { x: 1, y: 1 };
+        },
+
         components: {
-            vector: Bytepath.graphics.vector,
-            scroll: Bytepath.timers.scroll,
+            balloon: Bytepath.samples.assets.balloon,
         }
     }
 </script>
 
 <template>
-    <scroll :speed="1" v-slot="{ keyframe }">
-        <svg style="width: 100%" width="100%" height="100%">
-            <vector :x="keyframe">
-                <rect width="50" height="50" fill="red"/>
-            </vector>
-        </svg>
-    </scroll>
+    <div>
+        <input type="range" v-model.number="x" min="0" max="100" />X = {{ x }}<br/>
+        <input type="range" v-model.number="y" min="0" max="100" />Y = {{ y }}<br/>
+        <balloon :x="x" :y="y"/>
+    </div>
 </template>
