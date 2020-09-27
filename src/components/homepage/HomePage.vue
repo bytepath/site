@@ -1,10 +1,11 @@
 <script>
     import Bytepath from "bytepath";
  //   import Balloon from "./Balloon";
-    import Human from "../Animation/Assets/Human/Human.vue";
+  //  import Human from "../Animation/Assets/Human/Human.vue";
 //    import AssetExample from "./AssetExample";
     import OceanScene from "../Animation/Scenes/Ocean/OceanScene";
 //    import YellowFish from "../Animation/Assets/Fish/YellowFish";
+import Cloud from "./Cloud";
 
     export default {
         mixins: [],
@@ -38,10 +39,11 @@
             OceanScene,
             scroll: Bytepath.timers.scroll,
             clock: Bytepath.timers.clock,
-            Human,
-            vector: Bytepath.graphics.vector,
+            //Human,
             //Balloon,
             //YellowFish,
+            Cloud,
+            'bounce': Bytepath.animations.bounce,
         }
     }
 
@@ -50,15 +52,17 @@
 
 <template>
     <scroll :fps="10" v-slot="{ keyframe }" auto-play>
-        <div>
-            DOGS
-            <svg class="text-blue-200" viewBox="0 0 1363 20000">
-                <human :keyframe="keyframe" />
-            </svg>
-
-            <vector>
-                <rect x="0" y="0" width="50" height="50" fill="red" />
-            </vector>
-        </div>
+        <ocean-scene :keyframe="keyframe">
+            <clock v-slot="clock">
+                <bounce :keyframe="clock.keyframe" :mx="0.5" v-slot="bounce">
+                    <g>
+                        <cloud :matrix="bounce.position.matrix" :mx="0.2" :x="(-300 + (keyframe % 1040)) " :y="700"/>
+                        <cloud :matrix="bounce.position.inverse" :mx="0.2" :x="(-300 + (keyframe % 1040)) " :y="700"/>
+                        <cloud :matrix="bounce.position.matrix" :mx="0.15" :x="-400 + (keyframe % 750)" :y="550"/>
+                        <cloud :matrix="bounce.position.matrix" :mx="0.1" :x="-450 +  (keyframe % 1060)" :y="300"/>
+                    </g>
+                </bounce>
+            </clock>
+        </ocean-scene>
     </scroll>
 </template>
