@@ -1,7 +1,7 @@
 <script>
     import Bytepath from "bytepath";
-  //  import Human from "../Animation/Assets/Human/Human.vue";
-//    import AssetExample from "./AssetExample";
+    //  import Human from "../Animation/Assets/Human/Human.vue";
+    //    import AssetExample from "./AssetExample";
     import OceanScene from "../Animation/Scenes/Ocean/OceanScene";
     import YellowFish from "../Animation/Assets/Fish/YellowFish";
     import Cloud from "./Cloud";
@@ -37,12 +37,12 @@
         components: {
             OceanScene,
             scroll: Bytepath.timers.scroll,
-            clock: Bytepath.timers.clock,
             //Human,
             balloon: Bytepath.samples.assets.balloon,
             YellowFish,
             Cloud,
             'bounce': Bytepath.animations.bounce,
+            'vector': Bytepath.graphics.vector,
         }
     }
 
@@ -51,30 +51,30 @@
 
 <template>
     <scroll :fps="10" v-slot="{ keyframe }" auto-play>
-        <ocean-scene class="text-blue-300" :keyframe="keyframe">
-            <clock :fps="0" v-slot="clock">
-                <bounce :keyframe="clock.keyframe" :mx="0.5" v-slot="bounce">
-                    <g>
-                        <cloud :matrix="bounce.position.inverse" :x=" (keyframe >> 9) * (keyframe % 1610) " :y="400"/>
-                        <cloud :matrix="bounce.position.inverse" :x="-1000 + (keyframe >> 8) * (keyframe % 1610) " :y="900"/>
+        <div>
+        <vector height="3000">
+        <ocean-scene
+                :keyframe="keyframe"
+                :y="(keyframe > 1080)?(keyframe - 1080):0" class="text-blue-300"
 
-                        <balloon color="orange"
-                                 :x="keyframe * 1.2"
-                                 :y="700"
-                                 :a="(keyframe < 351)?360 - (keyframe % 360):0"
-                                 :sx="2.5"
-                                 :sy="2.5"
-                                 :cx="125"
-                                 :cy="0"
-                                 :matrix="bounce.position.inverse"
-                        />
-
-                        <cloud :matrix="bounce.position.matrix" :x="-450 +  (keyframe % 1060)" :y="150"/>
-                        <cloud :matrix="bounce.position.matrix" :x="(-900 + (keyframe % 1440)) " :y="700"/>
-
-                    </g>
-                </bounce>
-            </clock>
+                :sy="(keyframe < 2160)? ((keyframe > 1080)?(1 - (keyframe - 1080) / 1000 ):0):0"
+        >
+            <g>
+                <balloon color="orange"
+                         :x="keyframe * 1.2"
+                         :y="700"
+                         :a="(keyframe < 351)?360 - (keyframe % 360):0"
+                         :sx="2.5"
+                         :sy="2.5"
+                         :cx="125"
+                         :cy="0"
+                />
+            </g>
         </ocean-scene>
+        </vector>
+        <div style="height:1000px;">
+            <h1> WELCOME LOL</h1>
+        </div>
+        </div>
     </scroll>
 </template>
