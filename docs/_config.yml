@@ -109,42 +109,42 @@ offline:
   stripPrefix: public
   verbose: true
   runtimeCaching:
-    # Ad Sources - should be networkFirst
-    - urlPattern: /*
-      handler: networkFirst
-      options:
-        origin: sendgrid.sp1.convertro.com
-    - urlPattern: /*
-      handler: networkFirst
-      options:
-        origin: ad.doubleclick.net
-    # CDNs - should be cacheFirst, since they should be used specific versions so should not change
-    - urlPattern: /*
-      handler: cacheFirst
-      options:
-        origin: cdn.jsdelivr.net
-    - urlPattern: /*
-      handler: cacheFirst
-      options:
-        origin: fonts.googleapis.com
-    - urlPattern: /*
-      handler: cacheFirst
-      options:
-        origin: fonts.gstatic.com
-    - urlPattern: /*
-      handler: cacheFirst
-      options:
-        origin: cdnjs.cloudflare.com
-    - urlPattern: /*
-      handler: cacheFirst
-      options:
-        origin: maxcdn.bootstrapcdn.com
+#    # Ad Sources - should be networkFirst
+#    - urlPattern: /*
+#      handler: networkFirst
+#      options:
+#        origin: sendgrid.sp1.convertro.com
+#    - urlPattern: /*
+#      handler: networkFirst
+#      options:
+#        origin: ad.doubleclick.net
+#    # CDNs - should be cacheFirst, since they should be used specific versions so should not change
+#    - urlPattern: /*
+#      handler: cacheFirst
+#      options:
+#        origin: cdn.jsdelivr.net
+#    - urlPattern: /*
+#      handler: cacheFirst
+#      options:
+#        origin: fonts.googleapis.com
+#    - urlPattern: /*
+#      handler: cacheFirst
+#      options:
+#        origin: fonts.gstatic.com
+#    - urlPattern: /*
+#      handler: cacheFirst
+#      options:
+#        origin: cdnjs.cloudflare.com
+#    - urlPattern: /*
+#      handler: cacheFirst
+#      options:
+#        origin: maxcdn.bootstrapcdn.com
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-  type: git
-  repository: git@github.com:vuejs/vuejs.org.git
+#deploy:
+#  type: git
+#  /repository: git@github.com:vuejs/vuejs.org.git
 
 feed:
   type: atom
