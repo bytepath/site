@@ -46,13 +46,14 @@
             </reset>
 
             <reset :keyframe="keyframe" :start="1050" v-slot="reset">
-                <underwater :keyframe="reset.keyframe" :crabs="crabs" transform="translate(0 1600)">
+                <underwater style="fill: red;" :keyframe="reset.keyframe" :crabs="crabs" transform="translate(0 1600)">
                     <slot name="underwater" >
-                        <yellow-fish :x="200 + (Math.sin(keyframe / 50) * 250)" :y="200 + (Math.cos(keyframe / 50) * 250)"/>
-                        <yellow-fish :x="-700 + keyframe" :my="0.4" :mx="1" :y="-150"/>
-                        <big-fish :x="500 - keyframe" :my="0.5" :y="-25"/>
-                        <yellow-fish :x="-900 + keyframe" :my="0.2" :mx="0.8" :y="-225"/>
-                        <big-fish :x="900 - keyframe" :y="400" :my="0" :mx="1.5"/>
+                        <yellow-fish :x="-800" :y="-100" :sy="(keyframe / 600)" :sx="(keyframe / 350)" />
+                        <yellow-fish :x="-700 + keyframe" :my="0.4" :mx="1" :y="550"/>
+
+                        <big-fish :x="1500 - keyframe" :my="0.5" :y="125"/>
+                        <yellow-fish :x="-900 + keyframe" :my="0.2" :mx="1.8" :y="625"/>
+                        <big-fish :x="1900 - keyframe" :y="400" :my="0" :mx="1.5"/>
                     </slot>
                 </underwater>
             </reset>

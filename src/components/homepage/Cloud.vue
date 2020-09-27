@@ -4,7 +4,6 @@
     export default {
         mixins: [
             Bytepath.AnimationEntity,
-            Bytepath.mutators.acceleratesTranslation,
         ],
 
         props: {},

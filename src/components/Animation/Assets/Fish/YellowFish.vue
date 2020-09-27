@@ -7,7 +7,6 @@
         name: "yellowfish",
         layers: ["yellowfish"],
 
-
         components:{},
     });
 </script>
