@@ -1,7 +1,7 @@
 ---
 title: Camera Control
 type: bytepath
-order: 8
+order: 5
 ---
 ## Translations Along X & Y Axis
 

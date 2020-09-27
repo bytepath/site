@@ -1,7 +1,7 @@
 ---
 title: Importing Art Assets
 type: bytepath
-order: 7
+order: 6
 ---
 ## Translations Along X & Y Axis
 

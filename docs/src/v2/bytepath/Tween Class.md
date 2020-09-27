@@ -1,5 +1,5 @@
 ---
 title: Tween Class
 type: bytepath
-order: 8
+order: 9
 ---

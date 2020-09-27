@@ -1,7 +1,7 @@
 ---
 title: Asset Composition
 type: bytepath
-order: 4
+order: 3
 ---
 ## Asset Composition
 Assets can be composed together in other components to create new assets. 
