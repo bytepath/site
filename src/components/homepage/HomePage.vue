@@ -1,39 +1,22 @@
 <script>
     import Bytepath from "bytepath";
-    //  import Human from "../Animation/Assets/Human/Human.vue";
-    //    import AssetExample from "./AssetExample";
     import OceanScene from "../Animation/Scenes/Ocean/OceanScene";
     import YellowFish from "../Animation/Assets/Fish/YellowFish";
     import Cloud from "./Cloud";
 
-    export default {
+    export default Bytepath.CreateAsset({
         mixins: [],
         props: {},
 
         data() {
-            let scale = 1;
             return {
-                camera: new Bytepath.Position({
-                    scaleX: scale,
-                    scaleY: scale,
-                }),
-
-                humanPos: new Bytepath.Position({
-                    width: 69,
-                    height: 96,
-                }),
+                balloonPos: new Bytepath.Position({}),
             };
         },
 
         computed: {},
-        methods: {
-            computeCamera(keyframe) {
-                this.camera.x = (Math.sin(keyframe / 500));
-                this.camera.y = (Math.cos(keyframe / 500));
+        methods: {},
 
-                return this.camera;
-            }
-        },
         components: {
             OceanScene,
             scroll: Bytepath.timers.scroll,
@@ -43,38 +26,66 @@
             Cloud,
             'bounce': Bytepath.animations.bounce,
             'vector': Bytepath.graphics.vector,
+        },
+
+        animations() {
+            return {
+                default: [
+                    {
+                        start: 0,
+                        end: 970,
+                        handler({context, tween}) {
+                            console.log("stage 1");
+                            context.balloonPos.x = tween.number(100, 500);
+                            context.position.centerX = null;
+                            context.position.centerY = null;
+                        }
+                    },
+
+                    {
+                        start: 100,
+                        end: 970,
+                        handler({ context, tween, keyframe }) {
+                            console.log("stage 2", keyframe, context.balloonPos.x);
+                            context.balloonPos.angle = 360 - tween.number(0, 360);
+                            context.position.centerX = 100;
+                            context.position.centerY = 0;
+                        }
+                    },
+
+                    {
+                        start: 970,
+                        end: 1500,
+                        handler({ context, tween, keyframe }) {
+                            console.log("stage 3", keyframe, context.balloonPos.x);
+                            context.balloonPos.x = tween.number(500, 1000);
+                            context.position.centerX = null;
+                            context.position.centerY = null;
+
+                            //:sy="(keyframe < 2160)? ((keyframe > 1080)?((100 - (keyframe - 1080)) / 1000):0):-.999"
+                        //:y="(keyframe > 1080)?(keyframe - 1080):0"
+                        }
+                    }
+                ]
+            };
         }
-    }
-
-
+    });
 </script>
 
 <template>
-    <scroll :fps="10" v-slot="{ keyframe }" auto-play>
-        <div>
+    <div>
+        {{ keyframe }}
         <vector height="3000">
-        <ocean-scene
-                :keyframe="keyframe"
-                :y="(keyframe > 1080)?(keyframe - 1080):0" class="text-blue-300"
-
-                :sy="(keyframe < 2160)? ((keyframe > 1080)?(1 - (keyframe - 1080) / 1000 ):0):0"
-        >
-            <g>
-                <balloon color="orange"
-                         :x="keyframe * 1.2"
-                         :y="700"
-                         :a="(keyframe < 351)?360 - (keyframe % 360):0"
-                         :sx="2.5"
-                         :sy="2.5"
-                         :cx="125"
-                         :cy="0"
-                />
-            </g>
-        </ocean-scene>
+            <ocean-scene class="text-blue-300" :keyframe="keyframe">
+                <g>
+                    <balloon :cx="100" color="orange" :sx="2" :sy="2" :y="700" :position="balloonPos">
+                        <foreignObject>{{ keyframe }}</foreignObject>
+                    </balloon>
+                </g>
+            </ocean-scene>
         </vector>
         <div style="height:1000px;">
             <h1> WELCOME LOL</h1>
         </div>
-        </div>
-    </scroll>
+    </div>
 </template>
