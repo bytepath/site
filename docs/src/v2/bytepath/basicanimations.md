@@ -1,8 +1,12 @@
 ---
-title: Inline Animations
+title: Basic Animations
 type: bytepath
-order: 5
+order: 2
 ---
+## Prototyping With Inline Animations
+ - !!!Quickly try things with props
+ - !!!Why this doesnt scale 
+
 ## Translations Along X & Y Axis
 
 <div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
@@ -87,7 +91,7 @@ var app4 = new window.vueapp({ el: '#vector-rect-scale-prop' })
 ## Rotation Transformations
 
 <div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
-We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the world of computer graphics, changing the position of an element is referred to as a "Rotation Transformation"
+We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the world of computer graphics, changing the position of an element is referred to as a "Rotation Transformation Around the Z axis"
 ``` html
 <script>
     import Bytepath from "bytepath";

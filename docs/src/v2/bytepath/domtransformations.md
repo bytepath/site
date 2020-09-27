@@ -1,7 +1,7 @@
 ---
 title: DOM Transformations
 type: bytepath
-order: 7
+order: 100
 ---
 ## Translations Along X & Y Axis
 

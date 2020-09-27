@@ -1,9 +1,44 @@
 ---
-title: Clock Timer
+title: Keyframe Animations
 type: bytepath
-order: 3
+order: 7
 ---
-## Clock Timer
+## :keyframe Prop
+
+## Timers
+### Scroll Timer
+
+<div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
+The Scroll timer component will output a keyframe value based on the scroll position of the page. 
+``` html
+<script>
+    import Bytepath from "bytepath";
+
+    export default {
+        components: {
+            scroll: Bytepath.timers.scroll
+        }
+    }
+</script>
+
+<template>
+    <scroll v-slot="{ keyframe }">
+        Current Keyframe: {{ keyframe }}
+    </scroll>
+</template>
+```
+{% raw %}
+<div id="using-scroll" class="demo">
+    <using-scroll />
+</div>
+<script>
+var app3 = new window.vueapp({ el: '#using-scroll' })
+</script>
+{% endraw %}
+
+<br />
+
+### Clock Timer
 
 <div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
 - The Clock timer works the way you traditionally expect a timer to work. It outputs an integer value that gets larger over time.
@@ -48,7 +83,7 @@ You can verify this by moving the slider value in the example below. </p>
     <using-clock />
 </div>
 <script>
-var app3 = new window.vueapp({ el: '#using-clock' })
+var app4 = new window.vueapp({ el: '#using-clock' })
 </script>
 {% endraw %}
 
