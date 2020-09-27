@@ -55,15 +55,29 @@
 
                     {
                         start: 970,
-                        end: 1500,
+                        end: 1000,
                         handler({ context, tween, keyframe }) {
                             console.log("stage 3", keyframe, context.balloonPos.x);
-                            context.balloonPos.x = tween.number(500, 1000);
+                            context.balloonPos.x = tween.number(500, 850);
                             context.position.centerX = null;
                             context.position.centerY = null;
 
                             //:sy="(keyframe < 2160)? ((keyframe > 1080)?((100 - (keyframe - 1080)) / 1000):0):-.999"
                         //:y="(keyframe > 1080)?(keyframe - 1080):0"
+                        }
+                    },
+
+                    {
+                        start: 1000,
+                        end: 1200,
+                        handler({ context, tween, keyframe }) {
+                            console.log("stage 4", keyframe, context.balloonPos);
+                            context.balloonPos.y = tween.number(0, 600);
+                            context.position.centerX = null;
+                            context.position.centerY = null;
+
+                            //:sy="(keyframe < 2160)? ((keyframe > 1080)?((100 - (keyframe - 1080)) / 1000):0):-.999"
+                            //:y="(keyframe > 1080)?(keyframe - 1080):0"
                         }
                     }
                 ]
