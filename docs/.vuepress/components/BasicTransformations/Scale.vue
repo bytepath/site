@@ -4,9 +4,13 @@
     export default {
         data() {
             return {
-                sx: 1,
+                sx: 2,
                 sy: 1,
             };
+        },
+
+        mounted(){
+            this.$forceUpdate();
         },
 
         components: {

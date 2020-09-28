@@ -1,47 +1,61 @@
 ---
 title: Basic Animations
 type: bytepath
-order: 2
+order: 8
 ---
-## Prototyping With Inline Animations
- - !!!Quickly try things with props
- - !!!Why this doesnt scale 
 
-## Translations Along X & Y Axis
+## :keyframe Prop
+
+
+
+## Creating Keyframe Animations
+
+## Repeating animations
+
+## Timers
+
+### Scroll Timer
 
 <div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
-By modifying the **:X** and **:Y** props of the &lt;vector&gt; we created in the previous example, we can move our rectangle around the screen. In the world of computer graphics, changing the position of an element is referred to as a "Translation"
+The Scroll timer component will output a keyframe value based on the scroll position of the page. 
 
 ``` html
 <script>
     import Bytepath from "bytepath";
 
     export default {
-        data() {
-            return { x: 1, y: 1 };
-        },
-
         components: {
-            balloon: Bytepath.samples.assets.balloon,
+            scroll: Bytepath.timers.scroll
         }
     }
 </script>
 
 <template>
-    <div>
-        <input type="range" v-model.number="x" min="0" max="100" />X = {{ x }}<br/>
-        <input type="range" v-model.number="y" min="0" max="100" />Y = {{ y }}<br/>
-        <balloon :x="x" :y="y"/>
-    </div>
+    <scroll v-slot="{ keyframe }">
+        Current Keyframe: {{ keyframe }}
+    </scroll>
 </template>
 ```
 
+:::demo
+<Timers-UsingScrollTimer />
+:::
+
 <br />
 
-## Scale Transformations
+### Clock Timer
 
 <div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
-We can increase or decrease the size of our &lt;vector&gt; by modifying the **:SX** and **:SY** props of the &lt;vector&gt; component. In the world of computer graphics, changing the position of an element is referred to as a "Scale Transformation"
+- The Clock timer works the way you traditionally expect a timer to work. It outputs an integer value that gets larger over time.
+
+- If you are concerned about performance, you can control the animation tick rate using the :fps prop
+
+- If you are concerned about performance, you can control the animation tick rate using the :fps prop
+
+- :fps= 0 will pause the timer
+
+<p class="tip"> No matter what FPS is set to, &lt;clock-timer&gt; will output a number at a rate of 1000 frames = 1 second. This means that by modifying the FPS value your animations wont slow down, they will just be less smooth. 
+You can verify this by moving the slider value in the example below. </p>
 
 ``` html
 <script>
@@ -50,71 +64,28 @@ We can increase or decrease the size of our &lt;vector&gt; by modifying the **:S
     export default {
         data() {
             return {
-                sx: 1,
-                sy: 1,
+                fps: 60,
             };
         },
 
         components: {
-            balloon: Bytepath.samples.assets.balloon,
+            clock: Bytepath.timers.clock
         }
     }
 </script>
 
 <template>
+    <clock :fps="fps" v-slot="{ keyframe }">
     <div>
-        <input type="range" v-model.number="sx" min="0" max="4">Scale X = {{ sx }}<br/>
-        <input type="range" v-model.number="sy" min="0" max="4">Scale Y = {{ sy }}<br/>
-        <balloon :sx="sx" :sy="sy"/>
+        Current Keyframe: {{ keyframe }}<br/>
+        <input type="range" v-model.number="fps" min="0" max="60" > {{ fps }} FPS
     </div>
+    </clock>
 </template>
 ```
 
-<p class="tip success">Note that because we are using vector graphics, we can increase the size of our graphics as much as we want without losing detail or increasing our memory footprint.</p> 
+:::demo
+<Timers-UsingClockTimer />
+:::
 
 <br />
-
-## Rotation Transformations
-
-<div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
-We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the world of computer graphics, changing the position of an element is referred to as a "Rotation Transformation Around the Z axis"
-
-``` html
-<script>
-    import Bytepath from "bytepath";
-
-    export default {
-        data() {
-            return { angle: 0 };
-        },
-
-        components: {
-            balloon: Bytepath.samples.assets.balloon,
-        }
-    }
-</script>
-
-<template>
-    <div>
-        <input type="range" v-model.number="angle" min="0" max="360">Angle = {{ angle }}
-        <svg width="100%" height="100%">
-            <!-- Rotates in a circle starting at 0 Deg -->
-            <balloon :a="angle % 360"/>
-
-            <!-- Rotates in a circle starting at 45 Deg -->
-            <balloon color="blue" :a="(45 + angle) % 360" :x="125"/>
-
-            <!-- Rotates in a circle starting at 90 Deg -->
-            <balloon color="green" :a="(90 + angle) % 360" :x="225"/>
-
-            <!-- Rotates in a circle starting at 200 Deg -->
-            <balloon color="orange" :a="(200 + angle) % 360" :x="325"/>
-        </svg>
-    </div>
-</template>
-```
-
-<p class="tip success">Note that because we are using vector graphics, we can increase the size of our graphics as much as we want without losing detail or increasing our memory footprint.</p> 
-
-<br />
-<div style="height:100px" />

@@ -3,7 +3,11 @@
 
     export default {
         data() {
-            return { angle: 0 };
+            return { angle: 90 };
+        },
+
+        mounted(){
+            this.angle = 0;
         },
 
         components: {

@@ -3,11 +3,7 @@
 
     export default {
         data() {
-            return { x: 0, y: 0, angle: 0 };
-        },
-
-        mounted(){
-            this.x = 50;
+            return { x: 50, y: 0, angle: 0 };
         },
 
         components: {
@@ -29,7 +25,7 @@
 
         <!-- Here balloon and human have been combined to make a single asset -->
         <balloon :x="x" :y="y" :a="angle" v-slot="balloon">
-            <human :position="balloon.position" :sx="4" :sy="4" aspect="xMidYMax meet"/>
+            <human :position="balloon.position" :sx="2" :sy="2" aspect="xMidYMax meet"/>
         </balloon>
     </div>
 </template>

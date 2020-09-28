@@ -1,6 +1,7 @@
 <script>
     import Bytepath from "bytepath";
 
+    console.log("yte")
     export default {
         components: {
             vector: Bytepath.graphics.vector,

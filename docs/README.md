@@ -12,5 +12,3 @@ features:
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 footer: Vue Component Library 2019
 ---
-
-<BasicTransformations-VectorRectProps />

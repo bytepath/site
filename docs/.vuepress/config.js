@@ -43,28 +43,22 @@ let sidebar = {
         },
         {
             title: "Homeless Shelter",
-            children: ['domtransformations', 'matrix prop', 'positionclass', 'sample-assets' ],
+            children: ['domtransformations', 'matrixprop', 'positionclass', 'sampleassets' ],
         }
     ],
 };
 
-/**
- *  Guide
-
-
-
- Advanced Animations
- Renderless Animations
- Homeless Shelter
- Garbage Dump
- Matrix Prop
- Position Class
- Transformation Mutators
- Sample Assets
- DOM Transformations
- */
-
 module.exports = {
+    plugins: [
+        ['vuepress-plugin-container',
+            {
+                type: 'demo',
+                defaultTitle: "",
+                before: info => `<div class="theorem"><p class="title">${info}</p>`,
+                after: '</div>',
+            },
+        ],
+    ],
     locales: {
         '/': {
             lang: 'en-US',

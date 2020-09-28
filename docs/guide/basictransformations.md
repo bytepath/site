@@ -26,6 +26,10 @@ By modifying the **:X** and **:Y** props of the &lt;vector&gt; we created in the
 </template>
 ```
 
+:::demo
+<BasicTransformations-Translation />
+:::
+
 <br />
 
 ## Scale Transformations
@@ -65,6 +69,9 @@ We can increase or decrease the size of our &lt;vector&gt; by modifying the **:S
 </template>
 ```
 
+:::demo
+<BasicTransformations-Scale />
+:::
 
 <p class="tip success">Note that because we are using vector graphics, we can increase the size of our graphics as much as we want without losing detail or increasing our memory footprint.</p> 
 
@@ -108,6 +115,10 @@ We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the
 </template>
 ```
 
+:::demo
+<BasicTransformations-Rotation />
+:::
+
 
 <p class="tip success">Note that because we are using vector graphics, we can increase the size of our graphics as much as we want without losing detail or increasing our memory footprint.</p> 
 
@@ -139,6 +150,9 @@ Modifying the :width and :height props of a vector will override its internal si
 </template>
 ```
 
+:::demo
+<BasicTransformations-WidthHeight />
+:::
 
 <p class="tip">When manually setting width and height props, the preserveAspectRatio value of the SVGElement is set to "None" meaning you can and will end up with some strangely scaled images if you just enter random values here</p> 
 
