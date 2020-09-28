@@ -11,6 +11,12 @@
         data() {
             return {
                 balloonPos: new Bytepath.Position({}),
+                cam: new Bytepath.Position({
+                    x: 1000,
+                    scaleX: 0.5,
+                    width: 2000,
+                    height: 2000,
+                })
             };
         },
 
@@ -89,11 +95,11 @@
 <template>
     <div>
         {{ keyframe }}
-        <vector height="3000">
-            <ocean-scene class="text-blue-300" :keyframe="keyframe">
+        <vector height="3000" :camera="cam" aspect="xMinYMin meet">
+            <ocean-scene  class="text-blue-300" :keyframe="keyframe">
                 <g>
                     <balloon :cx="100" color="orange" :sx="2" :sy="2" :y="700" :position="balloonPos">
-                        <foreignObject>{{ keyframe }}</foreignObject>
+                        <foreignObject width="160" height="160">{{ keyframe }}</foreignObject>
                     </balloon>
                 </g>
             </ocean-scene>

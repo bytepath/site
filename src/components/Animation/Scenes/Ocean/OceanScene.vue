@@ -7,7 +7,7 @@
     import BigFish from "../../Assets/Fish/BigFish";
     import Octopus from "../../Assets/Fish/Octopus";
 
-    export default Bytepath.CreateEntity({
+    export default Bytepath.CreateAsset({
         name: "ocean-scene",
         layers: [],
         props: {
@@ -33,7 +33,7 @@
 </script>
 
 <template>
-    <vector v-bind="$props">
+    <vector v-bind="$props" aspect="xMinYMin meet">
         <g :transform="transform">
             <reset :keyframe="keyframe" :start="0" v-slot="reset">
                 <sky :fps="0" :keyframe="reset.keyframe">

@@ -5,11 +5,16 @@ order: 8
 ---
 ## :keyframe Prop
 
+## Creating Keyframe Animations
+
+## Repeating animations
+
 ## Timers
 ### Scroll Timer
 
 <div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
 The Scroll timer component will output a keyframe value based on the scroll position of the page. 
+
 ``` html
 <script>
     import Bytepath from "bytepath";
@@ -27,14 +32,6 @@ The Scroll timer component will output a keyframe value based on the scroll posi
     </scroll>
 </template>
 ```
-{% raw %}
-<div id="using-scroll" class="demo">
-    <using-scroll />
-</div>
-<script>
-var app3 = new window.vueapp({ el: '#using-scroll' })
-</script>
-{% endraw %}
 
 <br />
 
@@ -78,13 +75,6 @@ You can verify this by moving the slider value in the example below. </p>
     </clock>
 </template>
 ```
-{% raw %}
-<div id="using-clock" class="demo">
-    <using-clock />
-</div>
-<script>
-var app4 = new window.vueapp({ el: '#using-clock' })
-</script>
-{% endraw %}
+
 
 <br />

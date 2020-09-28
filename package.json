@@ -9,7 +9,9 @@
     "build:dev:watch": "vue-cli-service build --mode development --watch",
     "test:unit": "vue-cli-service test:unit",
     "test:watch": "vue-cli-service test:unit --watch",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -32,7 +34,9 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "vue-jest": "^3.0.7",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.6.0",
+    "vuepress-plugin-table-of-contents": "^1.1.7"
   },
   "babel": {
     "presets": [
