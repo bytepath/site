@@ -18,9 +18,15 @@
             },
         },
 
+        data() {
+            return {
+                balloonPos: new Bytepath.Position({}),
+            };
+        },
 
         components: {
             reset: Bytepath.timers.reset,
+            balloon: Bytepath.samples.assets.balloon,
             Coast,
             Sky,
             Underwater,
@@ -29,6 +35,74 @@
             Octopus,
         },
 
+        animations() {
+            return {
+                default: [
+                    {
+                        start: 0,
+                        end: 970,
+                        // eslint-disable-next-line
+                        handler({context, tween, keyframe}) {
+                            context.balloonPos.x = tween.number(100, 500);
+                            context.position.centerX = null;
+                            context.position.centerY = null;
+                        }
+                    },
+
+                    {
+                        start: 100,
+                        end: 970,
+                        // eslint-disable-next-line
+                        handler({context, tween, keyframe}) {
+                            context.balloonPos.angle = 360 - tween.number(0, 360);
+                            context.position.centerX = 100;
+                            context.position.centerY = 0;
+                        }
+                    },
+
+                    {
+                        start: 970,
+                        end: 1000,
+                        // eslint-disable-next-line
+                        handler({context, tween, keyframe}) {
+                            context.balloonPos.x = tween.number(500, 850);
+                            context.position.centerX = null;
+                            context.position.centerY = null;
+
+                            //:sy="(keyframe < 2160)? ((keyframe > 1080)?((100 - (keyframe - 1080)) / 1000):0):-.999"
+                            //:y="(keyframe > 1080)?(keyframe - 1080):0"
+                        }
+                    },
+
+                    {
+                        start: 1000,
+                        end: 1200,
+                        // eslint-disable-next-line
+                        handler({context, tween, keyframe}) {
+                            context.balloonPos.y = tween.number(0, 620);
+                            context.position.centerX = null;
+                            context.position.centerY = null;
+
+                            if (context.balloonPos.x < 850) {
+                                console.log();
+                            }
+                            //:sy="(keyframe < 2160)? ((keyframe > 1080)?((100 - (keyframe - 1080)) / 1000):0):-.999"
+                            //:y="(keyframe > 1080)?(keyframe - 1080):0"
+                        }
+                    }
+                ],
+                changecolor: [
+                    {
+                        start: 0,
+                        end: 4000,
+                        // eslint-disable-next-line
+                        handler({context, tween, keyframe}) {
+                            context.defaultColor = tween.hex("#FFFFFF", "#FF0000");
+                        }
+                    },
+                ]
+            };
+        },
     });
 </script>
 
@@ -37,6 +111,7 @@
         <g :transform="transform">
             <reset :keyframe="keyframe" :start="0" v-slot="reset">
                 <sky :fps="0" :keyframe="reset.keyframe">
+                    <balloon :cx="100" :sx="2" :sy="2" :y="700" :keyframe="keyframe" :position="balloonPos" />
                     <slot />
                 </sky>
             </reset>

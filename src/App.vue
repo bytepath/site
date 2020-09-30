@@ -1,7 +1,7 @@
 <script>
     /* eslint-disable */
 
-    import HomePage from "./components/homepage/HomePage";
+    import HomePage from "../docs/.vuepress/components/HomePage";
     import AnimationComputedExample from "../docs/.vuepress/components/Animation/AnimationComputedExample";
     import Bytepath from "bytepath";
 
