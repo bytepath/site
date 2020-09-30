@@ -31,6 +31,7 @@
 <template>
     <div>
         <input type="range" v-model.number="currentFrame" :min="start" :max="end"> Current Frame = {{ currentFrame }}
+        <br/>
         <slot :keyframe="currentFrame" />
     </div>
 </template>

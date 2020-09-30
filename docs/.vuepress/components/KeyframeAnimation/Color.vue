@@ -8,6 +8,7 @@
         animations() {
             return {
                 default: [
+                    // Frames 0 to 1000: Green to Blue
                     {
                         start: 0,
                         end: 1000,
@@ -15,6 +16,8 @@
                             context.defaultColor = tween.hex("#0000FF", "#FF0000");
                         }
                     },
+
+                    // Frames 1000 to 2000: Green to Blue
                     {
                         start: 1000,
                         end: 2000,
@@ -22,6 +25,8 @@
                             context.defaultColor = tween.hex("#FF0000", "#00FF00");
                         }
                     },
+
+                    // Frames 2000 to 3000: Green to Blue
                     {
                         start: 2000,
                         end: 3000,

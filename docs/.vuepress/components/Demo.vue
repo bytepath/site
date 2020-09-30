@@ -35,13 +35,10 @@
 
 <template>
     <div>
-        <div class="theorem">
-            <p v-if="title" class="title">{{ title }}</p>
-            <slot name="code" />
-        </div>
-
         <KeyframeSlider :start="start" :end="end" v-slot="{ keyframe }">
             <slot :keyframe="keyframe" />
         </KeyframeSlider>
+        <br/>
+        <br/>
     </div>
 </template>

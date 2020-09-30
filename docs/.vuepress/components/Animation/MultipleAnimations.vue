@@ -21,7 +21,7 @@
                         handler({ context, keyframe }) {
                             /**
                              * Balloon will scroll on the X axis to the value of the :keyframe prop
-                             * This effectively means we scroll between X=0 to X=100 depending on keyframe
+                             * This effectively means we scroll from X=0 to X=100
                              */
                             context.balloonPos.x = keyframe;
                         },

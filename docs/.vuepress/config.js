@@ -49,6 +49,9 @@ let sidebar = {
 };
 
 module.exports = {
+    markdown:{
+        lineNumbers: true,
+    },
     plugins: [
         ['vuepress-plugin-container',
             {
