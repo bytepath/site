@@ -1,32 +1,41 @@
-<template>
-    <div id="app" style="width: 100%; height: 100%; fill:#90CDF4;">
-        <img alt="Vue logo" src="./assets/logo.png">
-        <clock :fps="0" v-slot="{ keyframe }" auto-play>
-            <div >
-                <animation-computed-example :repeat="true" :keyframe="keyframe"/>
-              <div style="height: 1000vh;">
-
-              </div>
-            </div>
-        </clock>
-    </div>
-</template>
-
 <script>
-    import Homepage from './components/homepage/HomePage.vue'
+    /* eslint-disable */
+
+    import HomePage from "./components/homepage/HomePage";
     import AnimationComputedExample from "../docs/.vuepress/components/Animation/AnimationComputedExample";
     import Bytepath from "bytepath";
 
     export default {
         name: 'App',
+
+        data(){
+            return {
+                currentFrame: 0,
+            };
+        },
+
         components: {
-            Homepage,
-            AnimationComputedExample,
+            HomePage,
             clock: Bytepath.timers.clock,
-            //scroll: Bytepath.timers.scroll,
+            scroll: Bytepath.timers.scroll,
         }
     }
 </script>
+
+<template>
+    <div id="app" style="width: 100%; height: 100%; fill:#90CDF4;">
+      <scroll :fps="60"  v-slot="{ keyframe }" auto-play>
+            <div >
+                <home-page anim="changecolor" :keyframe="keyframe" />
+              <div style="height: 1000vh;">
+
+              </div>
+            </div>
+        </scroll>
+    </div>
+</template>
+
+
 
 <style>
     #app {

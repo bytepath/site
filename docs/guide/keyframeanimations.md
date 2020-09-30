@@ -4,77 +4,145 @@ type: bytepath
 order: 8
 ---
 ## :keyframe Prop
+Animations have a prop called :keyframe that accepts an integer value of the frame we want to display. If we provide :keyframe = 5 we want to display frame 5. If we provide keyframe 2000 we want frame 2000 of the animation
 
 ## Creating Keyframe Animations
 
-## Repeating animations
+We can create keyframe animations by adding an animations() attibute to the component passed into bytepath.createAsset
 
-## Timers
-### Scroll Timer
 
-<div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
-The Scroll timer component will output a keyframe value based on the scroll position of the page. 
+::: v-pre
 
-``` html
+```html
+<!-- AnimatedBalloon.vue -->
 <script>
     import Bytepath from "bytepath";
 
-    export default {
-        components: {
-            scroll: Bytepath.timers.scroll
-        }
-    }
-</script>
-
-<template>
-    <scroll v-slot="{ keyframe }">
-        Current Keyframe: {{ keyframe }}
-    </scroll>
-</template>
-```
-
-<br />
-
-### Clock Timer
-
-<div class="scrimba"><a href="" target="_blank" rel="noopener noreferrer">Try this lesson on Scrimba</a></div>
-- The Clock timer works the way you traditionally expect a timer to work. It outputs an integer value that gets larger over time.
-
-- If you are concerned about performance, you can control the animation tick rate using the :fps prop
-
-- If you are concerned about performance, you can control the animation tick rate using the :fps prop
-
-- :fps= 0 will pause the timer
-
-<p class="tip"> No matter what FPS is set to, &lt;clock-timer&gt; will output a number at a rate of 1000 frames = 1 second. This means that by modifying the FPS value your animations wont slow down, they will just be less smooth. 
-You can verify this by moving the slider value in the example below. </p>
-
-``` html
-<script>
-    import Bytepath from "bytepath";
-
-    export default {
+    export default Bytepath.CreateAsset({
         data() {
             return {
-                fps: 60,
+                balloonPos: new Bytepath.Position(),
+                currentFrame: 0,
             };
         },
 
         components: {
-            clock: Bytepath.timers.clock
-        }
-    }
-</script>
+            balloon: Bytepath.samples.assets.balloon,
+        },
 
-<template>
-    <clock :fps="fps" v-slot="{ keyframe }">
-    <div>
-        Current Keyframe: {{ keyframe }}<br/>
-        <input type="range" v-model.number="fps" min="0" max="60" > {{ fps }} FPS
-    </div>
-    </clock>
-</template>
+        animations(){
+            return {
+                // Default animation is ran by default if no animation is specified
+                default: [
+                    {
+                        name: "Moves right from 0 to 500",
+                        start: 0,
+                        end: 500,
+                        handler({ context, keyframe }) {
+                            let frame = Math.floor(keyframe / 2);
+                            context.balloonPos.x = frame;
+                            context.balloonPos.y = 0;
+                            context.balloonPos.angle = 0;
+                            context.balloonPos.scaleX = 1;
+                            context.balloonPos.scaleY = 1;
+
+                        },
+                    },
+                    {
+                        name: "Moves Down and right while rotating frames 501 to 1000",
+                        start: 501,
+                        end: 1000,
+                        handler({ context, keyframe }) {
+                            let frame = Math.floor(keyframe / 2);
+                            context.balloonPos.x = frame;
+                            context.balloonPos.y = frame - 201;
+                            context.balloonPos.angle = frame % 360;
+                            context.balloonPos.scaleX = 1;
+                            context.balloonPos.scaleY = 1;
+                        },
+                    },
+
+                    /**
+                     *
+                     *  NOTE THE GAP BETWEEN PREVIOUS END (1000) and New Start (1500)
+                     *  THIS MEANS WE DO NOTHING FROM FRAMES 1000 - 1500
+                     */
+
+
+                    {
+                        name: "Scale x and y without moving from 1500 to 2500",
+                        start: 1500,
+                        end: 2500,
+                        handler({ context, keyframe }) {
+                            let frame = Math.floor(keyframe / 10);
+                            let scale = ((keyframe - 1000) / 250);
+
+                            context.balloonPos.x = 365;
+                            context.balloonPos.y = (365 - 201) - frame;
+                            context.balloonPos.angle = 5;
+                            context.balloonPos.scaleX = scale;
+                            context.balloonPos.scaleY = scale;
+                        },
+                    }
+                ],
+            };
+        },
+    });
+</script>
 ```
 
+```html
+<template>
+    <div>
+        <vector v-bind="$props">
+            <animated-balloon :keyframe="currentFrame"/>
+        </vector>
+        <input type="range" v-model.number="currentFrame" min="0" max="2501"> <br />
+        <span v-if="currentFrame == 2501" style="color:red;">REPEATING!</span><br/>
+    </div>
+</template>
 
-<br />
+<script>
+    import Bytepath from "bytepath";
+    import AnimatedBalloon from "./AnimatedBalloon";
+
+    export default Bytepath.CreateAsset({
+        data() {
+            return {
+                balloonPos: new Bytepath.Position(),
+                currentFrame: 0,
+            };
+        },
+
+        components: {
+            AnimatedBalloon,
+        },
+    });
+</script>
+```
+
+:::
+
+:::demo
+<Animation-AnimationComputedExample />
+:::
+
+
+## Repeating animations
+
+Animations have a :repeat prop that accepts a boolean. If set to true, current animation frame will always be a value between animation start and end, repeating indefinitely
+
+Example   
+    Current Frame : 0
+    End frame: 1000
+    Actual Frame: 0
+
+    Current Frame : 1001
+    End frame: 1000
+    Actual Frame: 1
+
+    Current Frame : 10001
+    End frame: 1000
+    Actual Frame: 1
+
+

@@ -52,7 +52,7 @@ module.exports = {
     plugins: [
         ['vuepress-plugin-container',
             {
-                type: 'demo',
+                type: 'source',
                 defaultTitle: "",
                 before: info => `<div class="theorem"><p class="title">${info}</p>`,
                 after: '</div>',

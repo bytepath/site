@@ -93,26 +93,10 @@
                 changecolor: [
                     {
                         start: 0,
-                        end: 1000,
+                        end: 4000,
                         // eslint-disable-next-line
                         handler({context, tween, keyframe}) {
-                            context.defaultColor = tween.hex("#0000FF", "#FF0000");
-                        }
-                    },
-                    {
-                        start: 1000,
-                        end: 2000,
-                        // eslint-disable-next-line
-                        handler({context, tween, keyframe}) {
-                            context.defaultColor = tween.hex("#FF0000", "#00FF00");
-                        }
-                    },
-                    {
-                        start: 2000,
-                        end: 3000,
-                        // eslint-disable-next-line
-                        handler({context, tween, keyframe}) {
-                            context.defaultColor = tween.hex("#00FF00", "#0000FF");
+                            context.defaultColor = tween.hex("#FFFFFF", "#FF0000");
                         }
                     },
                 ]
@@ -122,22 +106,14 @@
 </script>
 
 <template>
-    <div id="app" style="width: 100%; height: 100vh; fill:#90CDF4;">
-        <scroll :speed="10" :fps="60" v-slot="{ keyframe }" auto-play>
-            <vector width="100%" height="100%">
-                <ocean-scene class="text-blue-300" :keyframe="keyframe">
-                    <balloon color="orange"
-                             :keyframe="keyframe"
-                             :anim="animation"
-                             :repeat="true"
-                             :cx="100"
-                             :sx="2"
-                             :sy="2"
-                             :x="300"
-                             :y="300 + keyframe / 10"/>
-                </ocean-scene>
-            </vector>
-        </scroll>
-        <div style="height: 1000vh;"></div>
-    </div>
+        <div id="app" style="width: 100%; height: 100vh; fill:#90CDF4;">
+            <scroll :fps="60" v-slot="{ keyframe }" auto-play>
+                <vector width="100%" height="100%">
+                    <ocean-scene class="text-blue-300" :keyframe="keyframe">
+                        <balloon :cx="100" color="orange" :sx="2" :sy="2" :y="700" :keyframe="keyframe" :anim="animation" />
+                    </ocean-scene>
+                </vector>
+            </scroll>
+            <div style="height: 1000vh;" ></div>
+        </div>
 </template>

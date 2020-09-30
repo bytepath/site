@@ -20,3 +20,12 @@ to state B (The state at the end of your animation frame)
 - animation provides the tween class the start and end frames of the animation so that it's able to calculate smooth transitions
 
     
+    
+### Animating colors
+You can animate colors using the tween.hex function
+
+<<< @/docs/.vuepress/components/KeyframeAnimation/Color.vue
+
+<Demo :end="3000" v-slot:default="{ keyframe }">
+<KeyframeAnimation-Color :keyframe="keyframe" />
+</Demo>    

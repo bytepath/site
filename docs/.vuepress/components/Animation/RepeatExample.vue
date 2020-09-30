@@ -22,7 +22,7 @@
             <animated-balloon :keyframe="currentFrame"/>
         </vector>
         <input type="range" v-model.number="currentFrame" min="0" max="2501">
-        {{ currentFrame }}
+        Current Frame: {{ currentFrame }}
         <span v-if="currentFrame == 2501" style="color:red;">REPEATING!</span>
     </div>
 </template>
