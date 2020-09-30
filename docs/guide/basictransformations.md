@@ -124,6 +124,13 @@ We can rotate our &lt;vector&gt; components by modifying the **:A** prop. In the
 
 <br />
 
+## Translating our prop in a circular motion
+
+can translate in circular motion using math.sin and math.cos. Each of these functions just returns a number between 1 and -1
+but the result of sin will be the opposite of cos. Combining the two of these together will make a circular motion 
+
+
+
 ## Width & Height Props
 
 <p class="tip">CURRENTLY BROKEN</p>

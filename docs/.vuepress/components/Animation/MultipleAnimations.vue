@@ -1,37 +1,21 @@
+<!-- MultipleAnimations.vue -->
 <script>
     import Bytepath from "bytepath";
+    let _k = Bytepath.CreateKeyframe;
 
     export default Bytepath.CreateAsset({
-        data() {
-            return {
-                balloonPos: new Bytepath.Position(),
-            };
-        },
-
         components: {
-            balloon: Bytepath.samples.assets.balloon,
-        },
-
-        animations(){
-            return {
-                default: [
-                    {
-                        start: 0,
-                        end: 100,
-                        handler({ context, keyframe }) {
-                            /**
-                             * Balloon will scroll on the X axis to the value of the :keyframe prop
-                             * This effectively means we scroll from X=0 to X=100
-                             */
-                            context.balloonPos.x = keyframe;
-                        },
-                    },
-                ],
-            };
-        },
+            animatedBalloon: Bytepath.samples.assets.animatedBalloon,
+        }
     });
 </script>
 
 <template>
-    <balloon :position="balloonPos" />
+    <div>
+        <animated-balloon anim="default" color="purple" :keyframe="keyframe" />
+        <animated-balloon anim="babystep" color="red" :repeat="true" :keyframe="keyframe" />
+        <animated-balloon anim="spin" :y="100" color="blue" :repeat="true" :keyframe="keyframe" />
+        <animated-balloon anim="loopThenLand" color="green" :keyframe="keyframe" />
+        <animated-balloon anim="changeColor" color="orange" :keyframe="keyframe" />
+    </div>
 </template>
