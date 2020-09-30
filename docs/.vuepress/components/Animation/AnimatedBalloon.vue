@@ -2,10 +2,9 @@
     import Bytepath from "bytepath";
 
     export default Bytepath.CreateAsset({
+
         data() {
-            return {
-                balloonPos: new Bytepath.Position(),
-            };
+            return { balloonPos: new Bytepath.Position() };
         },
 
         components: {
@@ -33,5 +32,5 @@
 </script>
 
 <template>
-    <balloon :position="balloonPos" />
+    <balloon :color="color" :position="balloonPos" />
 </template>

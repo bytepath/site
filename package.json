@@ -8,7 +8,7 @@
     "build:dev": "vue-cli-service build --mode development",
     "build:dev:watch": "vue-cli-service build --mode development --watch",
     "test:unit": "vue-cli-service test:unit",
-    "test:watch": "vue-cli-service test:unit --watch",
+    "test:watch": "vue-cli-service test:unit src/**/*.spec.js bytepathnpm/**/*.spec.js --watch",
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "fast-check": "^2.4.0",
     "transformation-matrix": "^2.4.0",
     "vue": "^2.6.11"
   },
@@ -63,8 +64,8 @@
     "overrides": [
       {
         "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+          "**/*.{j,t}s?(x)",
+          "**/*.spec.{j,t}s?(x)"
         ],
         "env": {
           "mocha": true
@@ -78,6 +79,9 @@
     "not dead"
   ],
   "jest": {
+    "testMatch": [
+      "<rootDir>/(src|bytepathnpm|docs|tests)/**/*.spec.(ts|tsx|js)|**/__tests__/*.(ts|tsx|js))"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,vue}",

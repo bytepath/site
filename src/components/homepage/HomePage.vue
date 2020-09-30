@@ -125,17 +125,15 @@
     <div id="app" style="width: 100%; height: 100vh; fill:#90CDF4;">
         <scroll :speed="10" :fps="60" v-slot="{ keyframe }" auto-play>
             <vector width="100%" height="100%">
-                <ocean-scene class="text-blue-300" :keyframe="keyframe">
-                    <balloon color="orange"
-                             :keyframe="keyframe"
-                             :anim="animation"
-                             :repeat="true"
-                             :cx="100"
-                             :sx="2"
-                             :sy="2"
-                             :x="300"
-                             :y="300 + keyframe / 10"/>
-                </ocean-scene>
+                <balloon
+                        :keyframe="keyframe"
+                        :anim="animation"
+                        :repeat="true"
+                        :cx="100"
+                        :sx="2"
+                        :sy="2"
+                        :x="300"
+                        :y="300 + keyframe / 10"/>
             </vector>
         </scroll>
         <div style="height: 1000vh;"></div>

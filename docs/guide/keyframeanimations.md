@@ -26,13 +26,32 @@ Lets toggle repeat on the simple animation we made in the previous example
 ```html
 <!-- line 35-37 of AnimatedBalloon.vue -->
 <template>
-    <balloon :repeat="true" :position="balloonPos" />
+    <balloon :repeat="true" color="blue" :position="balloonPos" />
 </template>
 ```
 
 <Demo :end="1000" v-slot="{ keyframe }">
-<Animation-AnimatedBalloon :repeat="true" :keyframe="keyframe" />
+<Animation-AnimatedBalloon color="blue" :repeat="true" :keyframe="keyframe" />
 </Demo> 
+
+
+### Using Create Keyframe function
+You can create your animations by writing objects manually like we did in the previous example, and everything will work fine.
+However, writing objects manually 
+ - is a bit of a chore 
+ - prone to errors and typos 
+ - can be messy in the single file component paradigm if you have a lot of animation frames
+ 
+ Instead its suggested you use the bytepath CreateKeyframe function to create animations in a functional style. The following 
+ example is equivalent to the animation we made in the previous example
+
+<<< @/docs/.vuepress/components/Animation/CreateKeyframe.vue
+
+<Demo :end="1000" v-slot="{ keyframe }">
+<Animation-CreateKeyframe :keyframe="keyframe" />
+</Demo>    
+
+
 
 
 ## Adding Multiple Keyframes
@@ -60,3 +79,7 @@ As you can see animations quickly turn your single file components into spaghett
 <Demo :end="1000" v-slot="{ keyframe }">
 <Animation-SeparateAnimationFile :keyframe="keyframe" />
 </Demo>
+
+## Assets can have an unlimited number of animations 
+
+Assets can have multiple animations, just add more keys to the object returned by animations() func 

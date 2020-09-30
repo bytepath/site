@@ -26,30 +26,30 @@ let sidebar = {
         {
             title: 'Art Assets',
             collapsable: false,
-            children: ['assetcomposition', 'cameracontrol', 'importingassets', 'assetreuse'],
+            children: ['assetcomposition', 'importingassets', 'assetreuse'],
         },
         {
             title: 'Keyframe Animation',
             collapsable: false,
-            children: ['keyframeanimations', 'tween', 'fastforwardandrewind', 'animationreuse'],
+            children: ['keyframeanimations', 'tween'],
         },
+
         {
-            title: 'User Input',
-            children: ['mouseinput', 'keyboardinput' ],
-        },
-        {
-            title: 'Advanced Animations',
-            children: ['renderlessanimations' ],
+            title: 'Advanced',
+            children: ['renderlessanimations', 'cameracontrol'],
         },
         {
             title: "Homeless Shelter",
-            children: ['domtransformations', 'matrixprop', 'positionclass', 'sampleassets' ],
+            children: [{
+                title: 'User Input',
+                children: ['mouseinput', 'keyboardinput'],
+            }, 'domtransformations', 'matrixprop', 'positionclass', 'sampleassets', 'fastforwardandrewind', 'animationreuse'],
         }
     ],
 };
 
 module.exports = {
-    markdown:{
+    markdown: {
         lineNumbers: true,
     },
     plugins: [
@@ -65,8 +65,8 @@ module.exports = {
     locales: {
         '/': {
             lang: 'en-US',
-            title: 'Component Library 🥂',
-            description: 'Documentation site for the Vue component library plugin'
+            title: 'BytePath',
+            description: 'A Fun Animation Framework For Everyone'
         }
     },
 

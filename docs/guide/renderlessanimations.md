@@ -3,15 +3,45 @@ title: Renderless Animations
 type: bytepath
 order: 12
 ---
+If you find yourself needing to animate an existing asset to do something new, the fastest way to do this is always going to be manipulating the asset via its available props.
+
+available props
+color
+x
+y
+sx
+sy
+angle
+etc
+
+However, as we have previously learned, animation via prop manipulation gets messy very quickly. In the situation you can pass an animation to an asset through its
+:anim prop.  
+
+## Renderless animations via :anim prop
+:anim, as we learned about previously, accepts a string that tells your component which of it's animations it should run. We can also pass this prop an animation object and the entity will run this animation in the context of itself. 
+
+
+<<< @/docs/.vuepress/components/Animation/PropAnimation.vue
+
+<Demo :end="1000" v-slot="{ keyframe }">
+<Animation-PropAnimation :keyframe="keyframe" />
+</Demo>  
 
 
 ## Renderless animations with props Default Values
 All entities have the following default components
 
 all notmal props (x,y,sx,sy,angle,etc)
+## Renderless animations with props Default Values
 
 
-## Renderless animations via :anim prop
+
+
+
+Sometimes you might find yourself wanting to run an animation in the context of your child components but the child component does not have that animation available in it's single file component. 
+Of course we could always just import the animation's javascript file in the component and at it to it's list of available animations, but if this animation is specific to the scene you are 
+currently building you might not want to do that. 
+ 
 
 pass an animation to the :anim prop instead of a string and the actual animation of your component will be ran in the context of your 
 child

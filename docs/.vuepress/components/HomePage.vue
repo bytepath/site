@@ -110,7 +110,7 @@
             <scroll :fps="60" v-slot="{ keyframe }" auto-play>
                 <vector width="100%" height="100%">
                     <ocean-scene class="text-blue-300" :keyframe="keyframe">
-                        <balloon :cx="100" color="orange" :sx="2" :sy="2" :y="700" :keyframe="keyframe" :anim="animation" />
+                        <balloon :cx="100" :sx="2" :sy="2" :y="700" :keyframe="keyframe" :anim="animation" />
                     </ocean-scene>
                 </vector>
             </scroll>
