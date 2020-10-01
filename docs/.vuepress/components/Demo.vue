@@ -1,12 +1,9 @@
 <script>
     import Bytepath from "bytepath";
-
+    import KeyframeSlider from "./KeyframeSlider";
     export default {
 
-        components: {
-            balloon: Bytepath.samples.assets.balloon,
-            //'vector': Bytepath.graphics.vector,
-        },
+
 
         props: {
             title: {
@@ -29,6 +26,10 @@
             return {
                 currentFrame: 0,
             };
+        },
+
+        components: {
+            KeyframeSlider,
         },
     }
 </script>

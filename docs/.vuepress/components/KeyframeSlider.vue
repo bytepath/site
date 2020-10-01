@@ -22,7 +22,7 @@
 
         data() {
             return {
-                currentFrame: 0,
+                currentFrame: 1,
             };
         },
     }
