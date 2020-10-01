@@ -3,11 +3,6 @@
 
     export default {
 
-        components: {
-            balloon: Bytepath.samples.assets.balloon,
-            //'vector': Bytepath.graphics.vector,
-        },
-
         props: {
             start: {
                 type: Number,
@@ -22,7 +17,7 @@
 
         data() {
             return {
-                currentFrame: 1,
+                currentFrame: 0,
             };
         },
     }

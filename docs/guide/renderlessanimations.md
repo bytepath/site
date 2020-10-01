@@ -13,20 +13,40 @@ sx
 sy
 angle
 etc
-
+ 
 However, as we have previously learned, animation via prop manipulation gets messy very quickly. In the situation you can pass an animation to an asset through its
 :anim prop.  
 
-## Renderless animations via :anim prop
-:anim, as we learned about previously, accepts a string that tells your component which of it's animations it should run. We can also pass this prop an animation object and the entity will run this animation in the context of itself. 
+## Running animations via :anim prop
+:anim, as we learned about previously, accepts a string that tells your component which of it's animations it should run. We can also pass this prop an animation object from another components "this.animations". The entity will run this animation in the context of itself meaning we can access and change anything we want inside the child component from the context of the parent 
 
 
 <<< @/docs/.vuepress/components/Animation/PropAnimation.vue
 
-<Demo :end="1000" v-slot="{ keyframe }">
+<Demo :end="2500" v-slot="{ keyframe }">
 <Animation-PropAnimation :keyframe="keyframe" />
 </Demo>  
 
+## Animations can only access and change properties that exist
+This might sound obvious, but since we are running the animation in the context of the child, any data you access and/or change in your animation handler() function must exist in the child class. 
+
+:::source DEMO
+Make a demo of an animation attempting to access something that doesn't exist in
+child class
+:::
+
+
+## Animations can still run in the parent if a child is using it
+A parent component can still access and use any of it's animations even if we are passing it to a child 
+
+:::source DEMO
+Show an animation running on parent and child at same time
+:::
+
+
+:::tip WARN
+its possible to get confused as to what component is actually running the animation here so be careful
+:::
 
 ## Renderless animations with props Default Values
 All entities have the following default components
