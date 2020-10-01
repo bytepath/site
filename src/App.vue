@@ -44,8 +44,7 @@
             <div >
                 <demo :end="2500" v-slot="demo">
                     <div>
-                        <animated-balloon anim="loopThenLand" color="green" :keyframe="keyframe" />
-                        <animated-balloon anim="babystep" color="red" :repeat="true" :keyframe="keyframe" />
+                        <animated-balloon anim="loopThenLand" color="green" :keyframe="demo.keyframe" />
                     </div>
                 </demo>
               <div style="height: 1000vh;">

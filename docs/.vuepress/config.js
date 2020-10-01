@@ -1,17 +1,5 @@
-// module.exports = {
-//     title: 'BytePath',
-//     description: 'Description of Bytepath',
-//     plugins: ['vuepress-plugin-table-of-contents'],
-// };
 
 let sidebar = {
-    // '/components/': [
-    //     {
-    //         title: 'Components',
-    //         collapsable: false,
-    //         children: ['standard-component']
-    //     }
-    // ],
     '/guide/': [
         {
             title: 'Introduction',
@@ -49,9 +37,12 @@ let sidebar = {
 };
 
 module.exports = {
+    extend: '@vuepress/theme-default',
+
     markdown: {
         lineNumbers: true,
     },
+
     plugins: [
         ['vuepress-plugin-container',
             {
@@ -62,6 +53,7 @@ module.exports = {
             },
         ],
     ],
+
     locales: {
         '/': {
             lang: 'en-US',
