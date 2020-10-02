@@ -26,7 +26,7 @@
 
         components: {
             reset: Bytepath.timers.reset,
-            balloon: Bytepath.samples.assets.balloon,
+            AnimatedBalloon: Bytepath.samples.assets.animatedBalloon,
             Coast,
             Sky,
             Underwater,
@@ -111,7 +111,7 @@
         <g :transform="transform">
             <reset :keyframe="keyframe" :start="0" v-slot="reset">
                 <sky :fps="0" :keyframe="reset.keyframe">
-                    <balloon :cx="100" :sx="2" :sy="2" :y="700" :keyframe="keyframe" :position="balloonPos" />
+                    <animated-balloon color="pink" :cx="100" :sx="2" :sy="2" :y="700" :keyframe="reset.keyframe" :position="balloonPos" />
                     <slot />
                 </sky>
             </reset>

@@ -1,39 +1,13 @@
 <script>
     import Bytepath from "bytepath";
-    import OceanScene from "../../../src/components/Animation/Scenes/Ocean/OceanScene";
-    import YellowFish from "../../../src/components/Animation/Assets/Fish/YellowFish";
-    import Cloud from "../../../src/components/homepage/Cloud";
+     import OceanScene from "../../../src/components/Animation/Scenes/Ocean/OceanScene";
 
-    export default Bytepath.CreateAsset({
-        mixins: [],
-        props: {},
-
-        data() {
-            return {
-                cam: new Bytepath.Position({
-                    x: 1000,
-                    scaleX: 0.5,
-                    width: 2000,
-                    height: 2000,
-                }),
-            };
-        },
-
-        computed: {},
-        methods: {},
-
+    export default {
         components: {
             OceanScene,
             scroll: Bytepath.timers.scroll,
-            //Human,
-            YellowFish,
-            Cloud,
-            'bounce': Bytepath.animations.bounce,
-            'vector': Bytepath.graphics.vector,
         },
-
-
-    });
+    };
 </script>
 
 <template>
