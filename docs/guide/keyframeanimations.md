@@ -13,10 +13,11 @@ We can create keyframe animations by adding an animations() attibute to the comp
 
 The Balloon asset should move to X=100 and never go past that point no matter how large :keyframe becomes
 
+<ClientOnly>
 <Demo :end="1000" v-slot="{ keyframe }">
 <Animation-AnimatedBalloon :keyframe="keyframe" />
 </Demo>    
-
+</ClientOnly>
 
 ## Repeating animations
 
@@ -30,9 +31,11 @@ Lets toggle repeat on the simple animation we made in the previous example
 </template>
 ```
 
+<ClientOnly>
 <Demo :end="1000" v-slot="{ keyframe }">
 <Animation-AnimatedBalloon color="blue" :repeat="true" :keyframe="keyframe" />
 </Demo> 
+</ClientOnly>
 
 ### Animations are reactive
 Context is just a vue component so if you change any reactive data inside of it (such as position), your art asset will
@@ -50,10 +53,11 @@ However, writing objects manually
 
 <<< @/docs/.vuepress/components/Animation/CreateKeyframe.vue
 
+<ClientOnly>
 <Demo :end="1000" v-slot="{ keyframe }">
 <Animation-CreateKeyframe :keyframe="keyframe" />
 </Demo>    
-
+</ClientOnly>
 
 - create keyframe can accept 
     - a function
@@ -69,9 +73,11 @@ You can add as many keyframes as you want to an animation. In the example below 
 
 <<< @/docs/.vuepress/components/Animation/MultiAction.vue
 
+<ClientOnly>
 <Demo :end="1000" v-slot="{ keyframe }">
 <Animation-MultiAction :keyframe="keyframe" />
 </Demo>    
+</ClientOnly>
 
 
 ## Storing Animations In Separate Files
@@ -82,10 +88,11 @@ As you can see animations quickly turn your single file components into spaghett
 
 <<< @/docs/.vuepress/components/Animation/MyAnimation.js
 
-
+<ClientOnly>
 <Demo :end="1000" v-slot="{ keyframe }">
 <Animation-SeparateAnimationFile :keyframe="keyframe" />
 </Demo>
+</ClientOnly>
 
 ## Assets can have an unlimited number of animations 
 
@@ -198,6 +205,8 @@ So balloon has 5 premade animations
 
 <<< @/docs/.vuepress/components/Animation/MultipleAnimations.vue
 
+<ClientOnly>
 <Demo :end="2500" v-slot="{ keyframe }">
 <Animation-MultipleAnimations :keyframe="keyframe" />
 </Demo>    
+</ClientOnly>

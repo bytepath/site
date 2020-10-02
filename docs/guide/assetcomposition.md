@@ -56,7 +56,9 @@ Try moving the sliders below and watch the assets move together.
 ```
 
 :::demo
+<ClientOnly>
 <ArtAsset-VehicleComposition />
+</ClientOnly>
 :::
 
 <p class="tip success">I</p>

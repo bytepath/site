@@ -38,7 +38,9 @@ The Scroll timer component will output a keyframe value based on the scroll posi
 ```
 
 :::demo
+<ClientOnly>
 <Timers-UsingScrollTimer />
+<ClientOnly>
 :::
 
 <br />
@@ -85,7 +87,9 @@ You can verify this by moving the slider value in the example below. </p>
 ```
 
 :::demo
+<ClientOnly>
 <Timers-UsingClockTimer />
+</ClientOnly>
 :::
 
 <br />

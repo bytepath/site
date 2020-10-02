@@ -107,11 +107,11 @@
 </script>
 
 <template>
-    <vector v-bind="$props" aspect="xMinYMin meet">
+    <vector :id="'ocean-scene'+_uid" v-bind="$props" aspect="xMinYMin meet">
         <g :transform="transform">
             <reset :keyframe="keyframe" :start="0" v-slot="reset">
-                <sky :fps="0" :keyframe="reset.keyframe">
-                    <animated-balloon color="pink" :cx="100" :sx="2" :sy="2" :y="700" :keyframe="reset.keyframe" :position="balloonPos" />
+                <sky :keyframe="reset.keyframe">
+                    <animated-balloon color="pink" :cx="100" :sx="3" :sy="3" :y="700" anim="loopThenLand" :keyframe="reset.keyframe" />
                     <slot />
                 </sky>
             </reset>

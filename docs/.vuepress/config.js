@@ -37,6 +37,11 @@ let sidebar = {
 };
 
 module.exports = {
+    runtimeCompiler: true,
+    configureWebpack: (config) => {
+        config.devtool = 'source-map'
+    },
+
     extend: '@vuepress/theme-default',
 
     markdown: {

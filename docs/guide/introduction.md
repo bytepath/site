@@ -65,8 +65,10 @@ Internally, &lt;vector&gt; is just a really fancy &lt;svg&gt;, so any valid &lt;
     </vector>
 </template>
 ```
-<Introduction-Rectangle />
 
+<ClientOnly>
+<Introduction-Rectangle />
+</ClientOnly>
 
 <p class="tip">It's helpful to be familiar with the &lt;svg&gt; tag, but if you aren't, dont worry! You won't be manually building assets like this in real projects unless you have a specific reason to do so.</p>
 
@@ -94,8 +96,10 @@ By changing the :color prop we added to the &lt;rectangle&gt; component, we can 
     </div>
 </template>
 ```
-<Introduction-ComponentBasedAssets />
 
+<ClientOnly>
+<Introduction-ComponentBasedAssets />
+</ClientOnly>
 
 
 ## Sample Assets
@@ -121,8 +125,10 @@ Bytepath ships with sample assets you can use right out of the box. Lets try imp
     </div>
 </template>
 ```
-<Introduction-BalloonSample />
 
+<ClientOnly>
+<Introduction-BalloonSample />
+</ClientOnly>
 
 <p class="tip success">Check out the full list of assets available HERE</p>
 

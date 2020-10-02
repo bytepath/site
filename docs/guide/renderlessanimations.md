@@ -22,10 +22,11 @@ This is the actual renderless component used on the Bytepath homepage animation
 
 <<< @/bytepathnpm/vue/Components/Animations/Animations/DoABarrelRoll.vue
 
+<ClientOnly>
 <Demo :end="2500" v-slot="{ keyframe }">
 <Animation-RenderlessExample :keyframe="keyframe" />
 </Demo>  
-
+</ClientOnly>
 
 
 ## Running animations in the context of child components
@@ -63,9 +64,11 @@ However, there are situations where this isn't good enough
 
 <<< @/docs/.vuepress/components/Animation/PropAnimation.vue
 
+<ClientOnly>
 <Demo :end="2500" v-slot="{ keyframe }">
 <Animation-PropAnimation :keyframe="keyframe" />
 </Demo>  
+</ClientOnly>
 
 
 ## Animations can only access and change properties that exist
