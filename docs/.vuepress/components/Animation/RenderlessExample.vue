@@ -1,3 +1,4 @@
+<!-- RenderlessExample.vue -->
 <script>
     import Bytepath from "bytepath";
 

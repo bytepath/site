@@ -3,7 +3,32 @@ title: Renderless Animations
 type: bytepath
 order: 12
 ---
+## Renderless animations
+if your parent component is basically just a vessel to provide an animation to a child, its best to make it into a renderless animation. 
 
+A renderless animation is a single file component that doesn't render anything, instead just accepts data values via props and passes values via slots. 
+Making a renderless animation is easy, just delete the template in your single file component. If Bytepath notices you haven't added a template it will assume you meant to create a renderless animation and proceed accordingly. 
+
+Renderless animations, in conjunction with the default values you can expect to exist in any component can be a very powerful combination. We can use this concept to create animations we can quickly reuse on any asset to quickly 
+create complex animation scenes without writing any code. 
+
+In the example below we create a "Barrel Roll" renderless animation component that will make your assets do a loop on the screen. 
+
+:::tip
+This is the actual renderless component used on the Bytepath homepage animation
+:::
+
+<<< @/docs/.vuepress/components/Animation/RenderlessExample.vue
+
+<<< @/bytepathnpm/vue/Components/Animations/Animations/DoABarrelRoll.vue
+
+<Demo :end="2500" v-slot="{ keyframe }">
+<Animation-RenderlessExample :keyframe="keyframe" />
+</Demo>  
+
+
+
+## Running animations in the context of child components
 Sometimes you might find yourself wanting to run an animation in the context of your child components but the child component does not have that animation available in it's single file component. 
 
 Of course we could always just import the animation's javascript file in the component and at it to it's list of available animations, but if this animation is specific to the scene you are 
@@ -41,6 +66,7 @@ However, there are situations where this isn't good enough
 <Demo :end="2500" v-slot="{ keyframe }">
 <Animation-PropAnimation :keyframe="keyframe" />
 </Demo>  
+
 
 ## Animations can only access and change properties that exist
 This might sound obvious, but since we are running the animation in the context of the child, any data you access and/or change in your animation handler() function must exist in the child class. This means that if you want to change a color, like we did in the previous example, the color variable must exist
@@ -104,28 +130,3 @@ this means that if you pass the "default" animation to a child, the default anim
 -- build a renderless function
 
 all notmal props (x,y,sx,sy,angle,etc)
-
-
-## Renderless animations
-
-building on the concept of passing animations, if your parent compoent is basically just a vessel to provide an animation to a child, its best to make it into a renderless animation. 
-
-A renderless animation is a single file component that doesn't render anything, instead just accepts data values via props and passes values via slots. 
-Making a renderless animation is easy, just delete the template in your single file component. If Bytepath notices you haven't added a template it will assume you meant to create a renderless animation and proceed accordingly. 
-
-Renderless animations, in conjunction with the default values you can expect to exist in any component can be a very powerful combination. We can use this concept to create animations we can quickly reuse on any asset to quickly 
-create complex animation scenes without writing any code. 
-
-In the example below we create a "bounce" animation component. This component is 
-very simple, it just oscilates between the start and end values you provide forever. Bounce is available in the Bytepath samples if you want to use it in your own projects
-
-<<< @/docs/.vuepress/components/Animation/RenderlessExample.vue
-
-<Demo :end="2500" v-slot="{ keyframe }">
-<Animation-RenderlessExample :keyframe="keyframe" />
-</Demo>  
-
-
-
-
-
