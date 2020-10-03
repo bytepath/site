@@ -1,23 +1,27 @@
 <script>
     /* eslint-disable */
 
-    import Demo from "../vuepress/.vuepress/components/Demo";
+    import Demo from "../bytepathnpm/docs/.vuepress/components/Demo";
     import Bytepath from "bytepath";
-    import CameraControl from "../vuepress/.vuepress/components/ArtAsset/CameraControl";
+    import AssetComposition from "../bytepathnpm/docs/.vuepress/components/Introduction/AssetComposition";
+    import CameraControl from "../bytepathnpm/docs/.vuepress/components/ArtAsset/CameraControl";
 
     export default {
         name: 'App',
 
         components: {
             Demo,
+            AssetComposition,
             CameraControl,
         },
     }
 </script>
 
 <template>
-    <div id="app" style="width: 100%; height: 100%; fill:#90CDF4;">
-       <camera-control :repeat="true" v-bind="demo" />
+    <div id="app" style="fill:#90CDF4;">
+        <demo>
+            <camera-control />
+        </demo>
     </div>
 </template>
 
