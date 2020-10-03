@@ -10,15 +10,17 @@
     "test:unit": "vue-cli-service test:unit",
     "test:watch": "vue-cli-service test:unit src/**/*.spec.js bytepathnpm/**/*.spec.js --watch",
     "lint": "vue-cli-service lint",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:dev": "vuepress dev vuepress",
+    "docs:build": "vuepress build vuepress",
+    "docs:build:debug": "vuepress build vuepress --mode=development"
   },
   "dependencies": {
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "fast-check": "^2.4.0",
     "transformation-matrix": "^2.4.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vuepress-plugin-dehydrate": "^1.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
