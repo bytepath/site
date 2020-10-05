@@ -2,25 +2,22 @@
     /* eslint-disable */
 
     import Demo from "../bytepathnpm/docs/.vuepress/components/Demo";
-    import Bytepath from "bytepath";
-    import AssetComposition from "../bytepathnpm/docs/.vuepress/components/Introduction/AssetComposition";
-    import CameraControl from "../bytepathnpm/docs/.vuepress/components/ArtAsset/CameraControl";
+    import example from "../bytepathnpm/docs/.vuepress/components/ArtAsset/CameraControl";
 
     export default {
         name: 'App',
 
         components: {
             Demo,
-            AssetComposition,
-            CameraControl,
+            example,
         },
     }
 </script>
 
 <template>
     <div id="app" style="fill:#90CDF4;">
-        <demo>
-            <camera-control />
+        <demo :end="2500" v-slot="{ keyframe }">
+            <example :keyframe="keyframe" />
         </demo>
     </div>
 </template>
