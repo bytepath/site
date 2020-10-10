@@ -45,6 +45,6 @@
 
 <template>
     <entity  v-bind="$props" v-slot="{ href, position, asset, transform }">
-        <layer v-for="(layer, i) in filteredLayers" :key="i" :position="layer" />
+        <layer v-for="(layer, i) in filteredLayers" :key="i" :name="layer" />
     </entity>
 </template>
