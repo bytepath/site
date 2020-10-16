@@ -1,9 +1,9 @@
 <script>
     /* eslint-disable */
     import Bytepath from "bytepath";
-    import Demo from "../bytepathnpm/docs/.vuepress/components/Demo";
-    import example from "../bytepathnpm/docs/.vuepress/components/KeyframeModifiers/DelayHiddenChain";
-    import HomePage from "../bytepathnpm/docs/.vuepress/components/HomePage";
+    import Demo from "./examples/Demo";
+    import example from "./examples/KeyframeModifiers/DelayHiddenChain";
+    import HomePage from "./examples/HomePage";
 
     export default {
         name: 'App',
