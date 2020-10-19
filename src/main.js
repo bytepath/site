@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from "./App";
+import HomePage from "./examples/HomePage";
+import Demo from "./examples/Demo";
 
 // Introduction
 import VectorRect from "./examples/Introduction/Rectangle";
@@ -30,8 +32,18 @@ import MultipleAnimations from "./examples/Animation/MultipleAnimations";
 import PropAnimation from "./examples/Animation/PropAnimation";
 import RenderlessExample from "./examples/Animation/RenderlessExample";
 import SeparateAnimationFile from "./examples/Animation/SeparateAnimationFile";
+import ComplicatedAnimation from "./examples/Animation/ComplicatedAnimation";
+import ComplicatedToTween from "./examples/Animation/ComplicatedToTween";
+import ColorAnimation from "./examples/KeyframeAnimation/Color";
+import DelayModifier from "./examples/KeyframeModifiers/Delay";
+import RepeatModifier from "./examples/KeyframeModifiers/Repeat";
+import HiddenModifier from "./examples/KeyframeModifiers/Hidden";
+import DelayHiddenChain from "./examples/KeyframeModifiers/DelayHiddenChain";
+import CameraControl from "./examples/ArtAsset/CameraControl";
 
 let components = {
+    Demo,
+    HomePage,
     "vector-rect": VectorRect,
     ComponentBasedAssets,
     BalloonSample,
@@ -53,6 +65,14 @@ let components = {
     PropAnimation,
     RenderlessExample,
     SeparateAnimationFile,
+    ComplicatedAnimation,
+    ComplicatedToTween,
+    ColorAnimation,
+    DelayModifier,
+    RepeatModifier,
+    HiddenModifier,
+    DelayHiddenChain,
+    CameraControl,
 };
 
 Object.entries(components).map((item) => {
@@ -85,9 +105,17 @@ else {
         whenBodyLoaded(() => {
             console.log({ ...document }, document.querySelectorAll(".demo"));
             document.querySelectorAll(".demo").forEach((element) => {
-                console.log("found a demo", element);
+                let args = element.getAttribute("component").split(" ");
+                /* eslint-disable-next-line */
+                let props = {
+                    src: args[0],
+                    start: (args[1]) ? parseInt(args[1]) : 0,
+                    end: (args[2]) ? parseInt(args[2]) : 1000,
+                };
+
+                console.log("found a demo", props, args);
                 let app = new Vue({
-                    render: h => h(element.getAttribute('component')),
+                    render: h => h('demo', { props }),
                 }).$mount(element);
 
                 console.log("app is", app);

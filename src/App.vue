@@ -12,14 +12,14 @@
             Demo,
             example,
             HomePage,
-            vector: Bytepath.graphics.vector
+            vector: Bytepath.graphics.vector,
         },
     }
 </script>
 
 <template>
     <div id="app" style="fill:#90CDF4;">
-        <home-page />
+        <demo src="home-page" :start="0" :end="2500" />
     </div>
 </template>
 

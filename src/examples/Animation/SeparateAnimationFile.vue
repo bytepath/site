@@ -6,6 +6,7 @@
         data() {
             return {
                 balloonPos: new Bytepath.Position(),
+                curFrame: 0,
             };
         },
 
@@ -22,5 +23,8 @@
 </script>
 
 <template>
-    <balloon :position="balloonPos" />
+    <div>
+        <input type="range" min="0" max="500" v-model.number="curFrame"/>Keyframe = {{ curFrame }}<br/>
+        <balloon :position="balloonPos" />
+    </div>
 </template>

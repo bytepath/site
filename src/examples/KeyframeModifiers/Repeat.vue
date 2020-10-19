@@ -1,23 +1,21 @@
 <script>
     import Bytepath from "bytepath";
-    import Underwater from "../../../../Samples/Scenes/Underwater/Underwater";
-    import Octopus from "../../../../Samples/Scenes/Underwater/Octopus";
 
     export default Bytepath.CreateAsset({
         name: "RepeatExample",
         layers: [],
         viewport: true,
         components: {
-            Underwater,
-            Octopus,
+            underwater: Bytepath.samples.scenes.underwater.underwater,
+            octopus: Bytepath.samples.scenes.underwater.octopus,
             "keyframe-repeat": Bytepath.timers.repeat,
         },
     });
 </script>
 
 <template>
-    <svg width="auto" height="500" viewBox="0 0 1384 1000">
-        <underwater :show-viewbox="true" v-bind="$props" overflow="hidden">
+    <svg  height="500" viewBox="0 0 1384 1000">
+        <underwater :show-viewbox="true" overflow="hidden">
             <g>
                 <!-- Repeats every 250 frames -->
                 <keyframe-repeat :repeat="250" :keyframe="keyframe" v-slot="delay">

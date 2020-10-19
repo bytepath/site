@@ -5,7 +5,6 @@
     export default Bytepath.CreateAsset({
         name: "imported",
         src,
-        layer: [],
     });
 </script>
 

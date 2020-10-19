@@ -4,11 +4,11 @@
     export default Bytepath.CreateAsset({
 
         data() {
-            return { balloonPos: new Bytepath.Position() };
+            return { balloonPos: new Bytepath.Position(), curFrame: 0 };
         },
 
         components: {
-            balloon: Bytepath.samples.assets.balloon,
+            balloon: Bytepath.samples.assets.tinyBalloon.tinyBalloon,
         },
 
         animations(){

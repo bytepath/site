@@ -1,10 +1,10 @@
 <script>
-    import Bytepath from "bytepath";
-    import Underwater from "../../../../Samples/Scenes/Underwater/Underwater";
-    import Octopus from "../../../../Samples/Scenes/Underwater/Octopus";
-    import KeyframeVisible from "../../../../vue/Components/Timers/KeyframeVisible";
+    import CreateAsset from "../../../bytepathnpm/Factories/CreateAsset";
+    import Underwater from "../../../bytepathnpm/Samples/Scenes/Underwater/Underwater";
+    import Octopus from "../../../bytepathnpm/Samples/Scenes/Underwater/Octopus";
+    import KeyframeVisible from "../../../bytepathnpm/vue/Components/Timers/KeyframeVisible";
 
-    export default Bytepath.CreateAsset({
+    export default CreateAsset({
         name: "HiddenExample",
         layers: [],
         viewport: true,
@@ -17,8 +17,8 @@
 </script>
 
 <template>
-    <svg width="auto" height="500" viewBox="0 0 1384 1000">
-        <underwater :show-viewbox="true" v-bind="$props" overflow="hidden">
+    <svg  height="500" viewBox="0 0 1384 1000">
+        <underwater :show-viewbox="true" overflow="hidden">
 
             <!-- Repeats when the octopus goes off screen -->
             <keyframe-visible :keyframe="keyframe" v-slot="visible">

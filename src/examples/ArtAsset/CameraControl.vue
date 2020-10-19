@@ -1,22 +1,6 @@
-<template>
-    <!-- CameraControl.vue -->
-    <div>
-        <input type="range" v-model.number="currentFrame" :min="0" :max="2500"> Current Frame = {{ currentFrame }}
-        <input type="range" v-model.number="myCamera.x" :min="0" :max="600"> X = {{ myCamera.x }}
-        <input type="range" v-model.number="myCamera.y" :min="0" :max="1200"> Y = {{ myCamera.y }}
-        <input type="range" v-model.number="zoom" :min="0" :max="10"> Zoom = {{ zoom }}
-
-        <timer :fps="10" v-slot="clock">
-            <ocean-scene align="topleft" :fit="false" :show-viewbox="true" :camera="myCamera" :keyframe="clock.keyframe"/>
-        </timer>
-    </div>
-</template>
-
 <script>
     import Bytepath from "bytepath";
-
-    let _k = Bytepath.CreateKeyframe;
-    import OceanScene from "../../../../Samples/Scenes/Ocean/OceanScene";
+    import OceanScene from "../../../bytepathnpm/Samples/Scenes/Ocean/OceanScene";
 
     export default Bytepath.CreateAsset({
         name: "CameraExample",
@@ -38,8 +22,8 @@
 
         watch: {
             zoom() {
-                this.myCamera.scaleX = this.zoom;
-                this.myCamera.scaleY = this.zoom;
+                this.myCamera.scaleX = (this.zoom > 0) ? this.zoom : 1;
+                this.myCamera.scaleY = (this.zoom > 0) ? this.zoom : 1;
             },
         },
 
@@ -49,3 +33,15 @@
         }
     });
 </script>
+
+<template>
+    <!-- CameraControl.vue -->
+    <div>
+        <input type="range" v-model.number="currentFrame" :min="0" :max="2500"> Current Frame = {{ currentFrame }}
+        <input type="range" v-model.number="myCamera.x" :min="0" :max="600"> X = {{ myCamera.x }}
+        <input type="range" v-model.number="myCamera.y" :min="0" :max="1200"> Y = {{ myCamera.y }}
+        <input type="range" v-model.number="zoom" :min="0" :max="10"> Zoom = {{ zoom }}
+
+        <ocean-scene style="fill:#90CDF4;" align="topleft" overflow="hidden" :camera="myCamera" :keyframe="keyframe"/>
+    </div>
+</template>

@@ -1,23 +1,27 @@
 <script>
     import Bytepath from "bytepath";
-    import Underwater from "../../../../Samples/Scenes/Underwater/Underwater";
-    import Octopus from "../../../../Samples/Scenes/Underwater/Octopus";
 
-    export default Bytepath.CreateAsset({
+    export default {
         name: "DelayExample",
-        layers: [],
-        viewport: true,
+
+        props: {
+            keyframe:{
+                type: Number,
+                default: 0,
+            }
+        },
+
         components: {
-            Underwater,
-            Octopus,
+            underwater: Bytepath.samples.scenes.underwater.underwater,
+            octopus: Bytepath.samples.scenes.underwater.octopus,
             "keyframe-delay": Bytepath.timers.delay,
         },
-    });
+    }
 </script>
 
 <template>
-    <svg width="auto" height="500" viewBox="0 0 1384 1000">
-        <underwater :show-viewbox="true" v-bind="$props" overflow="hidden">
+    <svg height="500" viewBox="0 0 1384 1000">
+        <underwater :show-viewbox="false" overflow="hidden">
             <g>
                 <!-- Start animating at frame 0 -->
                 <keyframe-delay :keyframe="keyframe" v-slot="delay">
